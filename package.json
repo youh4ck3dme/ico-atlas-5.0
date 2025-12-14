@@ -1,0 +1,35 @@
+{
+  "name": "ico-atlas-5",
+  "version": "5.0.0",
+  "description": "Slovak Enterprise Luxury PWA - The most advanced company lookup PWA in Slovak history",
+  "type": "module",
+  "keywords": [
+    "laravel",
+    "pwa",
+    "tailwindcss",
+    "alpinejs",
+    "glassmorphism",
+    "slovak",
+    "vite"
+  ],
+  "author": "youh4ck3dme",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "autoprefixer": "^10.4.16",
+    "axios": "^1.6.2",
+    "laravel-vite-plugin": "^1.0.0",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "vite": "^5.0.8"
+  },
+  "dependencies": {
+    "alpinejs": "^3.13.3"
+  }
+}
