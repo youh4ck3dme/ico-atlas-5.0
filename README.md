@@ -318,11 +318,36 @@ Ready for web push notifications.
 - [x] Documentation
 
 ### 🔮 Phase 3 (Recommended)
-- [ ] API integration
-- [ ] Authentication
-- [ ] Real-time search
-- [ ] Data export
-- [ ] Advanced filtering
+
+**API Integration:**
+- [ ] Laravel API routes for company lookup
+- [ ] Integration with Slovak Business Register
+- [ ] Rate limiting and caching
+- [ ] API documentation (Laravel API Resources)
+
+**Authentication:**
+- [ ] Laravel Sanctum / Breeze
+- [ ] User registration and login
+- [ ] OAuth2 integration (Google, Facebook)
+- [ ] User profile and settings
+
+**Real-time Search:**
+- [ ] Autocomplete with debouncing
+- [ ] WebSocket support (Laravel Echo + Pusher)
+- [ ] Live search results
+- [ ] Search history and favorites
+
+**Data Export:**
+- [ ] CSV export
+- [ ] PDF export (DomPDF/Barryvdh)
+- [ ] Excel export
+- [ ] Print functionality
+
+**Advanced Filtering:**
+- [ ] Filters by IČO, name, address
+- [ ] Filters by industry and size
+- [ ] Saved searches
+- [ ] Company comparison
 
 ---
 
@@ -338,6 +363,7 @@ Ready for web push notifications.
 | [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md) | Full project overview |
 | [GITHUB_SETUP.md](GITHUB_SETUP.md) | GitHub setup guide |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution guidelines |
+| [ROADMAP.md](ROADMAP.md) | Development roadmap & future features |
 | [LICENSE](LICENSE) | License information |
 
 ---

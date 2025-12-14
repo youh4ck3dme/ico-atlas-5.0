@@ -258,11 +258,36 @@ Pripravené na webové push notifikácie.
 - [x] Dokumentácia
 
 ### 🔮 Fáza 3 (odporúčaná)
-- [ ] Integrácia API
-- [ ] Autentifikácia
-- [ ] Vyhľadávanie v reálnom čase
-- [ ] Export údajov
-- [ ] Pokročilé filtrovanie
+
+**Integrácia API:**
+- [ ] Laravel API routes pre vyhľadávanie firiem
+- [ ] Integrácia so Slovenským obchodným registrom
+- [ ] Rate limiting a caching
+- [ ] API dokumentácia (Laravel API Resources)
+
+**Autentifikácia:**
+- [ ] Laravel Sanctum / Breeze
+- [ ] Registrácia a prihlásenie používateľov
+- [ ] OAuth2 integrácia (Google, Facebook)
+- [ ] Profil používateľa a nastavenia
+
+**Vyhľadávanie v reálnom čase:**
+- [ ] Autocomplete s debouncing
+- [ ] WebSocket podpora (Laravel Echo + Pusher)
+- [ ] Live search výsledky
+- [ ] Search history a favorites
+
+**Export údajov:**
+- [ ] Export do CSV
+- [ ] Export do PDF (DomPDF/Barryvdh)
+- [ ] Export do Excel
+- [ ] Tlač výsledkov
+
+**Pokročilé filtrovanie:**
+- [ ] Filtre podľa IČO, názvu, adresy
+- [ ] Filtre podľa odvetvia a veľkosti
+- [ ] Uložené vyhľadávania
+- [ ] Comparácia firiem
 
 ---
 
@@ -278,6 +303,7 @@ Pripravené na webové push notifikácie.
 | [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md) | Úplný prehľad projektu |
 | [GITHUB_SETUP.md](GITHUB_SETUP.md) | Návod na nastavenie GitHub |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Smernice pre príspevky |
+| [ROADMAP.md](ROADMAP.md) | Plán vývoja a budúce funkcie |
 | [LICENSE](LICENSE) | Licenčné informácie |
 
 ---
