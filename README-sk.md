@@ -270,10 +270,15 @@ Pripravené na webové push notifikácie.
 
 | Dokument | Účel |
 |----------|---------|
+| [README.md](README.md) | Hlavná dokumentácia (Anglická) |
+| [README-sk.md](README-sk.md) | Hlavná dokumentácia (Slovenská) |
 | [INSTALLATION.md](INSTALLATION.md) | Kompletný sprievodca nastavením |
 | [QUICKSTART.md](QUICKSTART.md) | 5-minútový rýchly štart |
 | [CHEATSHEET.md](CHEATSHEET.md) | Referenčný kód komponentu |
 | [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md) | Úplný prehľad projektu |
+| [GITHUB_SETUP.md](GITHUB_SETUP.md) | Návod na nastavenie GitHub |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Smernice pre príspevky |
+| [LICENSE](LICENSE) | Licenčné informácie |
 
 ---
 

@@ -330,10 +330,15 @@ Ready for web push notifications.
 
 | Document | Purpose |
 |----------|---------|
+| [README.md](README.md) | Main documentation (English) |
+| [README-sk.md](README-sk.md) | Main documentation (Slovak) |
 | [INSTALLATION.md](INSTALLATION.md) | Complete setup guide |
 | [QUICKSTART.md](QUICKSTART.md) | 5-minute quick start |
 | [CHEATSHEET.md](CHEATSHEET.md) | Component reference |
 | [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md) | Full project overview |
+| [GITHUB_SETUP.md](GITHUB_SETUP.md) | GitHub setup guide |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution guidelines |
+| [LICENSE](LICENSE) | License information |
 
 ---
 
