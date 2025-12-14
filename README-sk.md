@@ -10,6 +10,8 @@
 ![Alpine.js](https://img.shields.io/badge/Alpine.js-3.13-cyan)
 ![PWA](https://img.shields.io/badge/PWA-Ready-orange)
 
+**📖 [English version](README.md)**
+
 ---
 
 ## 🚀 Rýchly štart
@@ -321,6 +323,7 @@ Proprietárne - IČO ATLAS 5.0 © 2024
 
 ## 🎓 Zdroje
 
+- **Repozitár:** https://github.com/youh4ck3dme/ico-atlas-5.0
 - **Laravel Docs:** https://laravel.com/docs
 - **Tailwind CSS:** https://tailwindcss.com
 - **Alpine.js:** https://alpinejs.dev

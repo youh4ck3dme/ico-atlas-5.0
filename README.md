@@ -10,6 +10,8 @@
 ![Alpine.js](https://img.shields.io/badge/Alpine.js-3.13-cyan)
 ![PWA](https://img.shields.io/badge/PWA-Ready-orange)
 
+**📖 [Slovenská verzia / Slovak version](README-sk.md)**
+
 ---
 
 ## 🎨 Design Philosophy
@@ -381,6 +383,7 @@ Proprietary - IČO ATLAS 5.0 © 2024
 
 ## 🎓 Resources
 
+- **Repository:** https://github.com/youh4ck3dme/ico-atlas-5.0
 - **Laravel Docs:** https://laravel.com/docs
 - **Tailwind CSS:** https://tailwindcss.com
 - **Alpine.js:** https://alpinejs.dev

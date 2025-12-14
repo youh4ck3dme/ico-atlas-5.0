@@ -15,6 +15,14 @@
   "author": "youh4ck3dme",
   "license": "UNLICENSED",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/youh4ck3dme/ico-atlas-5.0.git"
+  },
+  "homepage": "https://github.com/youh4ck3dme/ico-atlas-5.0#readme",
+  "bugs": {
+    "url": "https://github.com/youh4ck3dme/ico-atlas-5.0/issues"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

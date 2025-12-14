@@ -3,15 +3,18 @@
 
 📦 ico-atlas-5.0/
 │
-├── 📝 Documentation (5 files)
-│   ├── README.md .................. Main documentation
+├── 📝 Documentation (7 files)
+│   ├── README.md .................. Main documentation (English)
+│   ├── README-sk.md ............... Main documentation (Slovak)
 │   ├── INSTALLATION.md ............ Complete setup guide
 │   ├── QUICKSTART.md .............. 5-minute quick start
 │   ├── CHEATSHEET.md .............. Component reference
-│   └── PROJECT_SUMMARY.md ......... Full project overview
+│   ├── PROJECT_SUMMARY.md ......... Full project overview
+│   └── GITHUB_SETUP.md ............ GitHub setup guide
 │
-├── ⚙️ Configuration (1 file)
-│   └── tailwind.config.js ......... Slovak Enterprise color palette
+├── ⚙️ Configuration (2 files)
+│   ├── tailwind.config.js ......... Slovak Enterprise color palette
+│   └── package.json ................ NPM package configuration
 │
 ├── 🎨 Resources
 │   │
@@ -36,17 +39,26 @@
 │           ├── search.blade.php ........... Search interface
 │           └── dashboard.blade.php ........ Dashboard view
 │
-└── 📱 PWA (2 files)
-    └── public/
-        ├── manifest.json .................. App manifest
-        └── service-worker.js .............. Offline support
+├── 📱 PWA (2 files)
+│   └── public/
+│       ├── manifest.json .................. App manifest
+│       └── service-worker.js .............. Offline support
+│
+├── 🔧 GitHub (1 file)
+│   └── .github/
+│       └── workflows/
+│           └── deploy.yml ................. CI/CD workflow
+│
+└── 📄 Other (2 files)
+    ├── LICENSE ............................ License file
+    └── .gitignore ......................... Git ignore rules
 
 =====================================
-TOTAL FILES: 19
-LINES OF CODE: ~2,500
+TOTAL FILES: 26
+LINES OF CODE: ~3,000+
 COMPONENTS: 5
 VIEWS: 3
-DOCS: 5
+DOCS: 7
 =====================================
 
 🎨 Design System:
