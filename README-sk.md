@@ -303,6 +303,7 @@ Pripravené na webové push notifikácie.
 | [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md) | Úplný prehľad projektu |
 | [GITHUB_SETUP.md](GITHUB_SETUP.md) | Návod na nastavenie GitHub |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Smernice pre príspevky |
+| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Kódex správania |
 | [ROADMAP.md](ROADMAP.md) | Plán vývoja a budúce funkcie |
 | [LICENSE](LICENSE) | Licenčné informácie |
 

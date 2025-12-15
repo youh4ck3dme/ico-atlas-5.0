@@ -363,6 +363,7 @@ Ready for web push notifications.
 | [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md) | Full project overview |
 | [GITHUB_SETUP.md](GITHUB_SETUP.md) | GitHub setup guide |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution guidelines |
+| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Code of conduct |
 | [ROADMAP.md](ROADMAP.md) | Development roadmap & future features |
 | [LICENSE](LICENSE) | License information |
 
