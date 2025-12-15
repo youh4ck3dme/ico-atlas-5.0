@@ -6,34 +6,61 @@
         results: [],
         loading: false,
         searching: false,
+        error: null,
+        
+        async searchByIco(ico) {
+            // Remove non-digits
+            const cleanIco = ico.replace(/\D/g, '');
+            
+            if (cleanIco.length !== 8) {
+                this.error = 'IČO musí mať presne 8 číslic';
+                return;
+            }
+            
+            this.loading = true;
+            this.searching = true;
+            this.error = null;
+            
+            try {
+                const response = await fetch(`/api/company/search?ico=${cleanIco}`);
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.message || 'Chyba pri vyhľadávaní');
+                }
+                
+                if (data.data) {
+                    this.results = [data.data];
+                } else {
+                    this.results = [];
+                }
+            } catch (err) {
+                this.error = err.message;
+                window.showToast(err.message, 'error');
+                this.results = [];
+            } finally {
+                this.loading = false;
+            }
+        },
         
         async search() {
+            // If query looks like IČO (8 digits), search by IČO
+            const cleanQuery = this.query.replace(/\D/g, '');
+            
+            if (cleanQuery.length === 8) {
+                await this.searchByIco(cleanQuery);
+                return;
+            }
+            
             if (this.query.length < 2) {
                 this.results = [];
                 this.searching = false;
                 return;
             }
             
-            this.loading = true;
-            this.searching = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                // Mock results
-                if (this.query.length > 2) {
-                    this.results = [
-                        { name: 'Tech Solutions s.r.o.', ico: '12345678', city: 'Bratislava', status: 'active' },
-                        { name: 'Slovak Innovation a.s.', ico: '87654321', city: 'Košice', status: 'active' },
-                        { name: 'Digital Agency SK', ico: '11223344', city: 'Žilina', status: 'active' },
-                    ].filter(r => 
-                        r.name.toLowerCase().includes(this.query.toLowerCase()) ||
-                        r.ico.includes(this.query)
-                    );
-                } else {
-                    this.results = [];
-                }
-                this.loading = false;
-            }, 300);
+            // TODO: Implement name/address search in Phase 3
+            this.searching = false;
+            this.error = 'Vyhľadávanie podľa názvu bude dostupné v Phase 3';
         }
     }">
         
@@ -53,9 +80,10 @@
                 <input 
                     type="text"
                     x-model="query"
-                    @input.debounce.300ms="search()"
-                    placeholder="Hľadať..."
+                    @input.debounce.500ms="search()"
+                    placeholder="Zadajte IČO (8 číslic) alebo názov..."
                     class="input-glass pl-12 pr-12"
+                    maxlength="50"
                 />
                 
                 <!-- Search Icon -->
@@ -110,7 +138,7 @@
                         >
                             <div class="flex items-start justify-between">
                                 <div class="flex-1">
-                                    <h3 class="text-sm font-semibold text-tatra-navy dark:text-porcelain-100 mb-1" x-text="result.name"></h3>
+                                    <h3 class="text-sm font-semibold text-tatra-navy dark:text-porcelain-100 mb-1" x-text="result.name || 'Neznámy názov'"></h3>
                                     <div class="flex items-center space-x-3 text-xs text-tatra-400 dark:text-porcelain-400">
                                         <span class="flex items-center">
                                             <svg class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -118,7 +146,7 @@
                                             </svg>
                                             IČO: <span x-text="result.ico"></span>
                                         </span>
-                                        <span class="flex items-center">
+                                        <span class="flex items-center" x-show="result.city">
                                             <svg class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -128,11 +156,9 @@
                                     </div>
                                 </div>
                                 <span 
-                                    class="badge badge-success ml-4"
-                                    x-show="result.status === 'active'"
-                                >
-                                    Aktívna
-                                </span>
+                                    class="badge badge-info ml-4"
+                                    x-text="result.source || 'unknown'"
+                                ></span>
                             </div>
                         </div>
                     </template>
@@ -152,9 +178,28 @@
             </div>
         </div>
         
+        <!-- Error Message -->
+        <div 
+            x-show="error"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 translate-y-2"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            class="mb-4"
+            style="display: none;"
+        >
+            <x-glass-card padding="default" class="border-l-4 border-slovak-crimson">
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 text-slovak-crimson mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <p class="text-sm text-tatra-navy dark:text-porcelain-100" x-text="error"></p>
+                </div>
+            </x-glass-card>
+        </div>
+        
         <!-- Empty State (shown when no search) -->
         <div 
-            x-show="!searching"
+            x-show="!searching && !error"
             x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="opacity-0 scale-95"
             x-transition:enter-end="opacity-100 scale-100"
@@ -180,7 +225,7 @@
                     Začnite vyhľadávať
                 </h3>
                 <p class="text-sm text-tatra-400 dark:text-porcelain-400 mb-6 max-w-sm mx-auto">
-                    Zadajte aspoň 2 znaky pre zobrazenie výsledkov z našej databázy 250,000+ slovenských firiem
+                    Zadajte IČO (8 číslic) pre vyhľadanie firmy. Vyhľadávanie podľa názvu bude dostupné v Phase 3.
                 </p>
                 
                 <!-- Popular Searches -->
