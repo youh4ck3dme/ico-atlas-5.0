@@ -1,0 +1,46 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.4'
+        extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, dom, filter, gd, json, mbstring, pdo
+        coverage: none
+        
+    - name: Install Composer dependencies
+      working-directory: ./ico-atlas
+      run: composer install --prefer-dist --no-progress --no-interaction
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Install npm dependencies
+      run: npm ci
+      
+    - name: Build assets
+      run: npm run build
+      
+    - name: Prepare Laravel Application
+      working-directory: ./ico-atlas
+      run: |
+        cp .env.example .env
+        php artisan key:generate
+        
+    - name: Run tests
+      working-directory: ./ico-atlas
+      run: php artisan test
