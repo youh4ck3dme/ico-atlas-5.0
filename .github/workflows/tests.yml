@@ -1,0 +1,47 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: mbstring, xml, curl, sqlite, pdo_sqlite
+        coverage: none
+    
+    - name: Copy .env
+      run: |
+        cd ico-atlas
+        cp .env.example .env || echo "APP_KEY=" > .env
+    
+    - name: Install Composer Dependencies
+      run: |
+        cd ico-atlas
+        composer install --prefer-dist --no-progress --no-interaction
+    
+    - name: Generate App Key
+      run: |
+        cd ico-atlas
+        php artisan key:generate
+    
+    - name: Install NPM Dependencies
+      run: |
+        cd ico-atlas
+        npm ci
+    
+    - name: Run Tests
+      run: |
+        cd ico-atlas
+        php artisan test
+
