@@ -17,14 +17,12 @@ jobs:
         node-version: '18'
         
     - name: Install dependencies
-      run: |
-        cd ico-atlas
-        npm ci
+      working-directory: ico-atlas
+      run: npm ci
       
     - name: Build assets
-      run: |
-        cd ico-atlas
-        npm run build
+      working-directory: ico-atlas
+      run: npm run build
       
     - name: Deploy
       run: echo "Deploy to your server"
