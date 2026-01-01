@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-porcelain-white dark:bg-matte-black text-tatra-navy dark:text-porcelain-100 font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-tatra-navy/20 dark:bg-porcelain-white/20 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-tatra-navy/30 dark:bg-porcelain-white/30;
+  }
+}
+
+@layer components {
+  /* Glass Card Base */
+  .glass-card {
+    @apply bg-white/80 dark:bg-matte-800/80 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-3xl shadow-glass dark:shadow-glass-dark;
+  }
+  
+  .glass-card-sm {
+    @apply bg-white/70 dark:bg-matte-800/70 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-2xl shadow-glass-sm dark:shadow-glass-dark-sm;
+  }
+  
+  .glass-card-lg {
+    @apply bg-white/85 dark:bg-matte-800/85 backdrop-blur-2xl border border-white/30 dark:border-white/15 rounded-4xl shadow-glass-lg dark:shadow-glass-dark-lg;
+  }
+  
+  /* Button Styles */
+  .btn-primary {
+    @apply px-6 py-3 bg-slovak-crimson hover:bg-slovak-600 text-white font-semibold rounded-full shadow-crimson-glow hover:shadow-crimson-glow-lg transition-all duration-300 active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-white/10 dark:bg-white/5 hover:bg-white/20 dark:hover:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/20 text-tatra-navy dark:text-porcelain-100 font-semibold rounded-full transition-all duration-300 active:scale-95;
+  }
+  
+  .btn-ghost {
+    @apply px-4 py-2 text-tatra-navy dark:text-porcelain-200 hover:bg-tatra-navy/5 dark:hover:bg-white/5 rounded-xl transition-all duration-200 active:scale-95;
+  }
+  
+  /* Input Styles */
+  .input-glass {
+    @apply w-full px-4 py-3 bg-white/50 dark:bg-matte-700/50 backdrop-blur-md border border-white/30 dark:border-white/20 rounded-2xl text-tatra-navy dark:text-porcelain-100 placeholder:text-tatra-300 dark:placeholder:text-porcelain-400 focus:outline-none focus:ring-2 focus:ring-tatra-navy dark:focus:ring-porcelain-100 focus:border-transparent transition-all duration-200;
+  }
+  
+  /* Badge Styles */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full;
+  }
+  
+  .badge-primary {
+    @apply bg-slovak-crimson/10 text-slovak-crimson border border-slovak-crimson/20;
+  }
+  
+  .badge-success {
+    @apply bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20;
+  }
+  
+  .badge-info {
+    @apply bg-tatra-navy/10 text-tatra-navy dark:text-tatra-200 border border-tatra-navy/20;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism Utilities */
+  .glass-blur-sm {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .glass-blur {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  
+  .glass-blur-lg {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+  
+  .glass-blur-xl {
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+  }
+  
+  /* Mobile Frame Container */
+  .mobile-frame {
+    @apply max-w-md mx-auto min-h-screen;
+  }
+  
+  /* Gradient Backgrounds */
+  .bg-gradient-tatra {
+    background: linear-gradient(135deg, #0B1E3D 0%, #091831 50%, #071225 100%);
+  }
+  
+  .bg-gradient-crimson {
+    background: linear-gradient(135deg, #DC143C 0%, #B01030 50%, #840C24 100%);
+  }
+  
+  .bg-gradient-mesh {
+    background: 
+      radial-gradient(at 0% 0%, rgba(11, 30, 61, 0.1) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(220, 20, 60, 0.1) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(11, 30, 61, 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(220, 20, 60, 0.1) 0px, transparent 50%);
+  }
+  
+  /* Dark Mode Gradient Mesh */
+  .dark .bg-gradient-mesh {
+    background: 
+      radial-gradient(at 0% 0%, rgba(11, 30, 61, 0.3) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(220, 20, 60, 0.2) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(11, 30, 61, 0.3) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(220, 20, 60, 0.2) 0px, transparent 50%);
+  }
+  
+  /* Skeleton Loader */
+  .skeleton {
+    @apply relative overflow-hidden bg-tatra-100/30 dark:bg-matte-700/30 rounded-2xl;
+  }
+  
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 bg-shimmer-gradient animate-shimmer;
+  }
+  
+  /* Text Gradients */
+  .text-gradient-crimson {
+    @apply bg-gradient-to-r from-slovak-crimson to-slovak-600 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-tatra {
+    @apply bg-gradient-to-r from-tatra-navy to-tatra-600 bg-clip-text text-transparent;
+  }
+  
+  /* Safe Area (iOS) */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  /* Smooth Transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Floating Animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+/* Loading States */
+.loading {
+  @apply pointer-events-none opacity-60;
+}
+
+.loading::after {
+  content: '';
+  @apply absolute inset-0 bg-white/50 dark:bg-black/50 backdrop-blur-sm;
+}
+
+/* Smooth Page Transitions */
+.page-enter {
+  @apply opacity-0 translate-y-4;
+}
+
+.page-enter-active {
+  @apply opacity-100 translate-y-0 transition-all duration-300;
+}
+
+.page-exit {
+  @apply opacity-100 translate-y-0;
+}
+
+.page-exit-active {
+  @apply opacity-0 -translate-y-4 transition-all duration-300;
+}

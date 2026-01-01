@@ -1,0 +1,12 @@
+node_modules
+vendor
+storage
+bootstrap/cache
+.git
+.env
+.env.*
+*.log
+.DS_Store
+coverage
+.phpunit.result.cache
+

@@ -1,0 +1,83 @@
+🇸🇰 IČO ATLAS 5.0 - PROJECT STRUCTURE
+=====================================
+
+📦 ico-atlas-5.0/
+│
+├── 📝 Documentation (7 files)
+│   ├── README.md .................. Main documentation (English)
+│   ├── README-sk.md ............... Main documentation (Slovak)
+│   ├── INSTALLATION.md ............ Complete setup guide
+│   ├── QUICKSTART.md .............. 5-minute quick start
+│   ├── CHEATSHEET.md .............. Component reference
+│   ├── PROJECT_SUMMARY.md ......... Full project overview
+│   └── GITHUB_SETUP.md ............ GitHub setup guide
+│
+├── ⚙️ Configuration (2 files)
+│   ├── tailwind.config.js ......... Slovak Enterprise color palette
+│   └── package.json ................ NPM package configuration
+│
+├── 🎨 Resources
+│   │
+│   ├── css/ (1 file)
+│   │   └── app.css ................ Tailwind + custom utilities
+│   │
+│   ├── js/ (2 files)
+│   │   ├── app.js ................. Alpine.js + utilities
+│   │   └── bootstrap.js ........... Axios configuration
+│   │
+│   └── views/
+│       │
+│       ├── components/ (5 files)
+│       │   ├── app-layout.blade.php ....... Main wrapper
+│       │   ├── glass-card.blade.php ....... Glass container
+│       │   ├── primary-button.blade.php ... Slovak Crimson CTA
+│       │   ├── input-group.blade.php ...... Floating label input
+│       │   └── bottom-nav.blade.php ....... Navigation dock
+│       │
+│       └── pages/ (3 files)
+│           ├── welcome.blade.php .......... Landing page
+│           ├── search.blade.php ........... Search interface
+│           └── dashboard.blade.php ........ Dashboard view
+│
+├── 📱 PWA (2 files)
+│   └── public/
+│       ├── manifest.json .................. App manifest
+│       └── service-worker.js .............. Offline support
+│
+├── 🔧 GitHub (1 file)
+│   └── .github/
+│       └── workflows/
+│           └── deploy.yml ................. CI/CD workflow
+│
+└── 📄 Other (2 files)
+    ├── LICENSE ............................ License file
+    └── .gitignore ......................... Git ignore rules
+
+=====================================
+TOTAL FILES: 26
+LINES OF CODE: ~3,000+
+COMPONENTS: 5
+VIEWS: 3
+DOCS: 7
+=====================================
+
+🎨 Design System:
+   🔷 Tatra Navy (#0B1E3D)
+   ❤️ Slovak Crimson (#DC143C)
+   ⚪ Porcelain White (#F8F9FA)
+   ⚫ Matte Black (#050505)
+
+🚀 Tech Stack:
+   • Laravel 11
+   • Vite 5.0
+   • Tailwind CSS 3.4+
+   • Alpine.js 3.13
+
+✨ Features:
+   ✅ Mobile-first design
+   ✅ Glassmorphism UI
+   ✅ Dark mode
+   ✅ PWA ready
+   ✅ Reusable components
+
+=====================================
