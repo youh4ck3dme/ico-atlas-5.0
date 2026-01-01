@@ -7,6 +7,7 @@ API dokumentácia: https://wl-api.mf.gov.pl/
 import requests
 from typing import Dict, Optional, List
 from datetime import datetime, timedelta
+from services.proxy_rotation import make_request_with_proxy
 
 # Cache pre Biała Lista odpovede
 _biala_cache = {}
@@ -58,8 +59,16 @@ def fetch_biala_lista_pl(nip: str) -> Optional[Dict]:
             "Accept": "application/json"
         }
         
-        # API volanie
-        response = requests.get(api_url, headers=headers, timeout=10)
+        # API volanie s proxy rotation
+        response = make_request_with_proxy(api_url, headers=headers, timeout=10)
+        
+        if response is None:
+            # Proxy zlyhalo, skúsiť priame volanie
+            try:
+                response = requests.get(api_url, headers=headers, timeout=10)
+            except Exception as e:
+                print(f"⚠️ Priame Biała Lista volanie zlyhalo: {e}")
+                return _generate_fallback_biala_data(nip)
         
         if response.status_code == 200:
             data = response.json()

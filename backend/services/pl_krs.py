@@ -7,6 +7,7 @@ import requests
 from typing import Dict, Optional
 from datetime import datetime, timedelta
 import re
+from services.proxy_rotation import make_request_with_proxy
 
 # Cache pre KRS odpovede
 _krs_cache = {}
@@ -60,7 +61,12 @@ def fetch_krs_pl(krs_number: str) -> Optional[Dict]:
             "User-Agent": "ILUMINATI-SYSTEM/1.0"
         }
         
-        response = requests.get(url, headers=headers, timeout=10)
+        # Použiť proxy rotation pre stabilitu
+        response = make_request_with_proxy(url, headers=headers, timeout=10)
+        
+        if response is None:
+            # Proxy zlyhalo, skúsiť priame volanie
+            response = requests.get(url, headers=headers, timeout=10)
         
         if response.status_code == 200:
             data = response.json()

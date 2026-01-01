@@ -10,6 +10,7 @@ import warnings
 from typing import Dict, Optional
 
 import requests
+from services.proxy_rotation import get_proxy, mark_proxy_success, mark_proxy_failed
 
 
 class ZrsrProvider:
@@ -140,8 +141,14 @@ class ZrsrProvider:
             max_retries = self.MAX_RETRIES
 
         for attempt in range(max_retries + 1):
+            proxy = get_proxy()
+            if proxy:
+                self.session.proxies = proxy
+                
             try:
                 response = self.session.get(url, params=params, timeout=10)
+                if proxy:
+                    mark_proxy_success(proxy)
                 if response.status_code == 200:
                     return response
                 elif response.status_code == 404:
@@ -152,6 +159,8 @@ class ZrsrProvider:
                         continue
                     return response
             except requests.exceptions.RequestException as e:
+                if proxy:
+                    mark_proxy_failed(proxy)
                 if attempt < max_retries:
                     print(
                         f"⚠️ Request failed (attempt {attempt + 1}/{max_retries + 1}): {e}"

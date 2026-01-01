@@ -7,6 +7,7 @@ API dokumentácia: https://api.ceidg.gov.pl/
 import requests
 from typing import Dict, Optional
 from datetime import datetime, timedelta
+from services.proxy_rotation import make_request_with_proxy
 
 # Cache pre CEIDG odpovede
 _ceidg_cache = {}
@@ -59,8 +60,16 @@ def fetch_ceidg_pl(ceidg_number: str) -> Optional[Dict]:
             "Content-Type": "application/json"
         }
         
-        # API volanie (v produkcii by sme použili API key)
-        response = requests.get(api_url, headers=headers, timeout=10)
+        # Použiť proxy rotation pre stabilitu (s fallbackom)
+        response = make_request_with_proxy(api_url, headers=headers, timeout=10)
+        
+        if response is None:
+            # Proxy zlyhalo, skúsiť priame volanie
+            try:
+                response = requests.get(api_url, headers=headers, timeout=10)
+            except Exception as e:
+                print(f"⚠️ Priame CEIDG volanie zlyhalo: {e}")
+                return _generate_fallback_ceidg_data(ceidg_number)
         
         if response.status_code == 200:
             data = response.json()

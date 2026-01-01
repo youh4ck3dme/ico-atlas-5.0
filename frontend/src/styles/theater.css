@@ -1287,3 +1287,55 @@
   text-align: center;
   opacity: 0.7;
 }
+/* ============================================
+   MOBILE RESPONSIVENESS
+   ============================================ */
+
+@media (max-width: 768px) {
+  .theater-overlay .vault-door {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .access-title {
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+  }
+  
+  .search-theater {
+    width: 90%;
+    margin: 1rem auto;
+  }
+  
+  .node-card-container {
+    width: 90vw;
+    height: 80vh;
+  }
+  
+  .node-card-content {
+    padding: 1rem;
+  }
+  
+  .node-card-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .export-panel {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+  .export-button:hover {
+    transform: none;
+  }
+  
+  .node-card-container {
+    /* Prevent accidental zoom on double tap in some browsers */
+    touch-action: manipulation;
+  }
+}
