@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/venv/
+backend/.venv/
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node.js
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.cache/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Testing
+.coverage
+.pytest_cache/
+test-results/
+
+# Logs
+logs/
+*.log
+/tmp/
+
+# Documentation (generated)
+docs/_build/
+
+# Build outputs
+*.pyc
+*.pyo
+*.pyd
+
+# SSL Certificates (self-signed for local development)
+ssl/*.pem
+ssl/*.key
+ssl/*.crt
+ssl/*.cert
+
