@@ -6,9 +6,11 @@
 1.  **Graph Service:** Implemented backend logic for linking companies via executives/owners (`backend/services/graph_service.py`).
 2.  **Frontend Integration:** "Theater Mode" now requests `graph=1` and displays the backend graph.
 3.  **Verification:** Unified tests (`run_all_tests.py`) PASS.
-4.  **Deployment:** ✨ SUCCESSFULLY DEPLOYED via `deploy_vps_native.ps1`.
-    *   Backend running on VPS.
-    *   SSL Auto-renew enabled.
+4.  **Deployment:** ✨ SUCCESSFULLY DEPLOYED.
+    *   **Frontend:** LIVE at `https://pro.icoatlas.sk/` (React).
+    *   **Backend:** LIVE at `https://pro.icoatlas.sk/api/` (FastAPI).
+    *   **SSL:** 🟢 Secured by Let's Encrypt.
+    *   **Infrastructure:** Native Nginx + Systemd on VPS.
 
 ## 📂 Context & Artifacts
 The latest project context files are saved in `docs/ai_context/`:
