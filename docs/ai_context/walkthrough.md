@@ -123,4 +123,25 @@ Executed unified test suite `run_all_tests.py` to validate all components.
 - **Graph Service:** Verified via `tests/test_graph_standalone.py` (ID generation, node/edge upserts).
 - **Core Search:** Verified via `test_real_ico.py`.
 - **Cache & Fallback:** Verified via `test_hybrid_cache.py` and `verify_fallback.py`.
-- **Result:** ✨ ALL CORE SYSTEMS ARE FUNCTIONAL.
+### 9. Production Deployment & Repair
+Successfully executed `VPS_DEPLOY/native/deploy_vps_native.ps1` followed by manual repairs.
+- **Backend:** Uploaded and installed in `/var/www/icoatlas-pro`.
+- **Infrastructure:** Configured Nginx (Native), Systemd.
+- **Repair Actions:**
+    - Restarted Database (Docker).
+    - Fixed missing dependencies (`pip install`).
+    - Corrected file structure mismatch using `fix_prod.ps1`.
+- **Status:** **🟢 LIVE & SECURE**
+    - Protocol: HTTPS (SSL Enabled).
+    - Verified: `listen 443 ssl` directive present in Nginx.
+    - URL: `https://pro.icoatlas.sk`
+    - Backend: Fully Functional (JSON responses verified).
+
+### 10. Frontend Deployment
+Successfully deployed Frontend and updated Nginx routing via `deploy_frontend.ps1`.
+- **Build:** `npm run build` executed locally.
+- **Upload:** `dist` folder synchronized to `/var/www/icoatlas-pro/frontend/dist`.
+- **Nginx:** Configured simple routing:
+    - `/` -> Static Frontend (React App)
+    - `/api` -> Backend Proxy (FastAPI)
+- **Status:** **🟢 LIVE** - Verified UI loads on `https://pro.icoatlas.sk`.

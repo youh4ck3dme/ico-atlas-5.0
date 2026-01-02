@@ -101,12 +101,14 @@
     - [x] Migrate to Native Nginx + Systemd (Script `deploy_vps_native.ps1` Ready) <!-- id: 12 -->
     - [x] Configure Let's Encrypt SSL (Auto-configured by script) <!-- id: 13 -->
 
-- [ ] **Phase 9: Frontend Graph Integration**
+- [x] **Phase 9: Frontend Graph Integration**
     - [x] Update frontend service to request `graph=1` parameter <!-- id: 14 -->
     - [x] Verify graph visualization in Theater Mode <!-- id: 15 -->
 - [x] PWA manifest a mobilná responzita (PWA manifest & SW registration linked)
 - [x] Unified Test Suite (`run_all_tests.py`)
 - [x] Unit testy pre Frontend Utils (`DataParser.test.js`)
+- [x] **DEPLOYMENT: Frontend Deployed to VPS (Native Nginx)**
+
 
 ---
 
