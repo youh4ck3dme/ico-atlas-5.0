@@ -31,7 +31,8 @@ def main():
     tests = [
         "verify_fallback.py",
         "test_hybrid_cache.py",
-        "test_real_ico.py"
+        "test_real_ico.py",
+        "tests/test_graph_standalone.py"
     ]
     
     results = {}
