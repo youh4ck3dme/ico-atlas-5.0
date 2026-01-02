@@ -207,13 +207,14 @@ def export_to_csv(graph_data: Dict) -> str:
     csv_lines.append("Typ,ID,Label,Krajina,Risk Score,Detaily")
     nodes = graph_data.get("nodes", [])
     for node in nodes:
-        details = (
+        details_str = (
             json.dumps(node.get("details", {}), ensure_ascii=False)
             if isinstance(node.get("details"), dict)
             else str(node.get("details", ""))
         )
+        details_escaped = details_str.replace('"', '""')
         csv_lines.append(
-            f'{node.get("type", "")},{node.get("id", "")},"{node.get("label", "")}",{node.get("country", "")},{node.get("risk_score", 0) or 0},"{details.replace('"', '""')}"'
+            f'{node.get("type", "")},{node.get("id", "")},"{node.get("label", "")}",{node.get("country", "")},{node.get("risk_score", 0) or 0},"{details_escaped}"'
         )
 
     # Edges

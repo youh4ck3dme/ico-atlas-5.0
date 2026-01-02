@@ -21,6 +21,8 @@ import CookiePolicy from './pages/CookiePolicy';
 import DataProcessingAgreement from './pages/DataProcessingAgreement';
 import License from './pages/License';
 import Pricing from './pages/Pricing';
+import About from './pages/About';
+import Contact from './pages/Contact';
 import TheaterPage from './pages/TheaterPage';
 
 
@@ -96,6 +98,8 @@ function App() {
             <Route path="/dpa" element={<DataProcessingAgreement />} />
             <Route path="/license" element={<License />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/theater" element={<TheaterPage />} />
           </Routes>
         </Router>

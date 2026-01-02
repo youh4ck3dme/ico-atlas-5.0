@@ -4,8 +4,7 @@ import { Check, Star, Crown, Zap, Building2, Users, Shield, Sparkles, Globe, Tre
 const pricingTiers = [
     {
         name: 'STARTER',
-        price: '€0',
-        period: '/rok',
+        price: { monthly: '€0', yearly: '€0' },
         description: 'Pre malých podnikateľov a študentov',
         icon: Star,
         color: 'from-gray-600 to-gray-800',
@@ -22,8 +21,7 @@ const pricingTiers = [
     },
     {
         name: 'BUSINESS',
-        price: '€299',
-        period: '/rok',
+        price: { monthly: '€29', yearly: '€229' },
         description: 'Pre malé a stredné podniky',
         icon: Building2,
         color: 'from-[#D4AF37] to-[#FFD700]',
@@ -47,8 +45,7 @@ const pricingTiers = [
     },
     {
         name: 'PROFESSIONAL',
-        price: '€799',
-        period: '/rok',
+        price: { monthly: '€69', yearly: '€599' },
         description: 'Pre stredné a veľké firmy',
         icon: TrendingUp,
         color: 'from-blue-600 to-blue-800',
@@ -73,8 +70,7 @@ const pricingTiers = [
     },
     {
         name: 'ENTERPRISE',
-        price: '€2,499',
-        period: '/rok',
+        price: { monthly: '€199', yearly: '€1,999' },
         description: 'Pre veľké korporácie a štátne inštitúcie',
         icon: Crown,
         color: 'from-purple-600 to-purple-800',
@@ -99,8 +95,7 @@ const pricingTiers = [
     },
     {
         name: 'CUSTOM',
-        price: 'Dohodou',
-        period: '',
+        price: { monthly: 'Dohodou', yearly: 'Dohodou' },
         description: 'Pre veľké medzinárodné spoločnosti',
         icon: Infinity,
         color: 'from-red-600 to-red-800',
@@ -129,7 +124,9 @@ const comparisonData = [
     { feature: 'Medzinárodné dáta', starter: '-', business: '-', professional: '-', enterprise: '✓', custom: '✓' }
 ];
 
-function Pricing() {
+const Pricing = () => {
+    const [billingPeriod, setBillingPeriod] = React.useState('yearly');
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-[#0A0A0A] via-[#1a1a2e] to-[#16213e] relative overflow-hidden">
             {/* Animated Stars Background */}
@@ -157,9 +154,35 @@ function Pricing() {
                     <h1 className="text-5xl font-bold text-[#D4AF37] mb-6" style={{ textShadow: '0 0 20px rgba(212, 175, 55, 0.5)' }}>
                         Cenové Plány ILUMINATE
                     </h1>
-                    <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                    <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-10">
                         Vyberte si balík, ktorý najlepšie vyhovuje vašim potrebám. Každý plán obsahuje pokročilé analytické nástroje a prístup k dátam zo 4 krajín V4 regiónu.
                     </p>
+
+                    {/* Billing Toggle */}
+                    <div className="flex justify-center items-center gap-4 mb-4">
+                        <span className={`text-sm font-bold ${billingPeriod === 'monthly' ? 'text-white' : 'text-gray-400'}`}>Mesačne</span>
+                        <button
+                            onClick={() => setBillingPeriod(billingPeriod === 'monthly' ? 'yearly' : 'monthly')}
+                            className="w-16 h-8 bg-[#D4AF37]/20 rounded-full p-1 relative transition-colors duration-300 border border-[#D4AF37]/50"
+                        >
+                            <div
+                                className={`w-5 h-5 rounded-full bg-[#D4AF37] transition-transform duration-300 transform ${billingPeriod === 'yearly' ? 'translate-x-8' : 'translate-x-0'}`}
+                            />
+                        </button>
+                        <span className={`text-sm font-bold ${billingPeriod === 'yearly' ? 'text-white' : 'text-gray-400'}`}>
+                            Ročne <span className="text-[#D4AF37] text-xs ml-1">(-35%)</span>
+                        </span>
+                    </div>
+
+                    {/* Money Back Guarantee Badge */}
+                    <div className="flex justify-center mb-4 animate-fade-in delay-200">
+                        <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-1.5 backdrop-blur-sm shadow-[0_0_15px_rgba(34,197,94,0.2)]">
+                            <Shield className="text-green-400 w-4 h-4" />
+                            <span className="text-green-100 text-xs font-bold tracking-wide uppercase">
+                                30-dňová garancia vrátenia peňazí
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Pricing Cards */}
@@ -185,9 +208,18 @@ function Pricing() {
                                 </div>
                                 <h3 className="text-2xl font-bold text-[#D4AF37] mb-2">{tier.name}</h3>
                                 <p className="text-gray-400 text-sm mb-4">{tier.description}</p>
-                                <div className="flex items-baseline justify-center">
-                                    <span className="text-4xl font-bold text-white">{tier.price}</span>
-                                    <span className="text-gray-400 ml-1">{tier.period}</span>
+                                <div className="flex flex-col items-center justify-center">
+                                    {billingPeriod === 'yearly' && tier.price.yearly !== '€0' && tier.price.yearly !== 'Dohodou' && (
+                                        <span className="text-gray-500 line-through text-sm font-semibold">
+                                            €{Math.round(parseInt(tier.price.yearly.replace(/[^0-9]/g, '')) * 1.53)}
+                                        </span>
+                                    )}
+                                    <div className="flex items-baseline justify-center">
+                                        <span className="text-4xl font-bold text-white">{tier.price[billingPeriod]}</span>
+                                        {tier.name !== 'CUSTOM' && (
+                                            <span className="text-gray-400 ml-1">{billingPeriod === 'monthly' ? '/mesiac' : '/rok'}</span>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
 
@@ -201,8 +233,8 @@ function Pricing() {
                             </ul>
 
                             <button className={`w-full py-3 px-4 rounded-xl font-bold transition-all duration-300 ${tier.popular
-                                    ? 'bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0A0A0A] hover:from-[#FFD700] hover:to-[#D4AF37] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)]'
-                                    : 'bg-[#D4AF37]/20 border-2 border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37]/30'
+                                ? 'bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-[#0A0A0A] hover:from-[#FFD700] hover:to-[#D4AF37] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)]'
+                                : 'bg-[#D4AF37]/20 border-2 border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37]/30'
                                 }`}>
                                 {tier.name === 'CUSTOM' ? 'Kontaktujte nás' : 'Začať teraz'}
                             </button>

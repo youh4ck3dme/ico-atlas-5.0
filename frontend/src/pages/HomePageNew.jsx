@@ -17,6 +17,8 @@ import RateLimitIndicator from '../components/RateLimitIndicator';
 import { useAuth } from '../contexts/AuthContext';
 import SEOHead from '../components/SEOHead';
 import { API_URL } from '../config/api';
+import ComparisonSection from '../components/ComparisonSection';
+import MarketingBanner from '../components/MarketingBanner';
 
 /**
  * ILUMINATI SYSTEM v5.0 - SLOVAK ENTERPRISE EDITION
@@ -524,6 +526,12 @@ export default function HomePageNew() {
                   />
                 </div>
               </div>
+
+              {/* Comparison Section */}
+              <ComparisonSection />
+
+              {/* Marketing Banner */}
+              <MarketingBanner />
             </div>
           )}
 

@@ -196,8 +196,7 @@ origins = [
     "http://127.0.0.1:52285",  # VS Code port forwarding
     "http://192.168.0.9:8012",  # User's specific IP/port
     # HTTPS origins (pre SSL)
-    "https://localhost:8009",  # Frontend HTTPS
-    "https://127.0.0.1:8009",  # Frontend HTTPS alternative
+    "https://pro.icoatlas.sk",
 ]
 
 # --- CORS DEBUGGING ---
@@ -472,6 +471,12 @@ def _scrape_orsr_sk(ico: str) -> Optional[Dict]:
 @app.get("/favicon.ico", include_in_schema=False)
 def favicon():
     return Response(content="", media_type="image/x-icon")
+
+
+@app.get("/health")
+def health_check():
+    """Health check endpoint for Docker"""
+    return {"status": "healthy", "timestamp": datetime.now().isoformat()}
 
 
 @app.get("/")

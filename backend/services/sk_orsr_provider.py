@@ -5,7 +5,7 @@ Hybridný model: Cache → DB → Live Scraping
 
 import re
 from datetime import datetime, timedelta
-from typing import Dict, Optional
+from typing import Dict, Optional, List, Any
 
 import requests
 from bs4 import BeautifulSoup
@@ -279,10 +279,202 @@ class OrsrProvider:
 
         # Helper to clean text
         def clean_text(text):
-            if not text: return None
+            if not text: return ""
             # Remove (od: ...) and whitespace
             text = re.sub(r"\s*\(od:.*?\)", "", text)
             return text.strip()
+
+        # ---------------------------
+        # PEOPLE PARSER (ORSR vypis.asp DOM-aware)
+        # ---------------------------
+        STOP_PERSON = {
+            "predstavenstvo",
+            "štatutárny orgán",
+            "spoločníci",
+            "akcionári",
+            "holandské kráľovstvo",
+            "česká republika",
+            "slovenská republika",
+            "rakúska republika",
+            "nemecká spolková republika",
+            "maďarsko",
+            "čierna hora",
+        }
+
+        def _norm(s: str) -> str:
+            return re.sub(r"\s+", " ", (s or "").strip()).lower()
+
+        def _is_stop_person(s: str) -> bool:
+            return _norm(s) in STOP_PERSON
+
+        def _unique_keep_order(seq):
+            seen = set()
+            out = []
+            for x in seq:
+                x = clean_text(x)
+                if x and x not in seen:
+                    seen.add(x)
+                    out.append(x)
+            return out
+
+        def _looks_like_address(line: str) -> bool:
+            l = _norm(line)
+            if not l:
+                return False
+            # digits, postal codes, typical address tokens
+            if re.search(r"\d", line):
+                return True
+            if any(tok in l for tok in ["ul.", "ulica", "č.", "cislo", "číslo", "nám", "cesta", "str.", "/", "psc", "psč"]):
+                return True
+            # city+postcode pattern "Viedeň 1030" contains digits -> already handled
+            return False
+
+        def _looks_like_role(line: str) -> bool:
+            l = _norm(line).lstrip("-").strip()
+            if not l:
+                return False
+            # common roles in ORSR
+            role_tokens = [
+                "predseda", "člen", "clen", "konateľ", "konatel", "prokurista",
+                "predstavenstva", "dozornej rady", "správca", "likvidátor", "likvidator"
+            ]
+            return any(tok in l for tok in role_tokens)
+
+        def _parse_people_from_names_td(names_td: BeautifulSoup, mode: str):
+            """
+            mode: 'executives' | 'shareholders'
+            Prefer anchor boundaries: <a class="lnm">NAME</a>
+            """
+            people = []
+
+            anchors = names_td.find_all("a", class_="lnm")
+            if anchors:
+                for a in anchors:
+                    name = clean_text(a.get_text(" ", strip=True))
+                    if not name or _is_stop_person(name):
+                        continue
+
+                    p = {"name": name}
+                    role = None
+                    since = None
+                    until = None
+                    birth_date = None
+                    residence_parts = []
+
+                    # gather sibling spans until next anchor
+                    for sib in a.next_siblings:
+                        # stop at next person
+                        if getattr(sib, "name", None) == "a" and "lnm" in (sib.get("class") or []):
+                            break
+
+                        if getattr(sib, "name", None) != "span":
+                            continue
+
+                        t = clean_text(sib.get_text(" ", strip=True))
+                        if not t:
+                            continue
+
+                        tl = _norm(t)
+
+                        # ignore obvious noise
+                        if _is_stop_person(t):
+                            continue
+
+                        # structured label lines
+                        if tl.startswith("vznik funkcie:"):
+                            since = clean_text(t.split(":", 1)[1])
+                            continue
+                        if tl.startswith("zánik funkcie:") or tl.startswith("zanik funkcie:"):
+                            until = clean_text(t.split(":", 1)[1])
+                            continue
+                        if tl.startswith("dátum narodenia:") or tl.startswith("datum narodenia:"):
+                            birth_date = clean_text(t.split(":", 1)[1])
+                            continue
+
+                        # owners section has financial lines - ignore
+                        if mode == "shareholders":
+                            if tl.startswith("vklad:") or tl.startswith("splatené:") or tl.startswith("splatene:") or "osoba je" in tl:
+                                continue
+
+                        # role line often begins with "-"
+                        if t.strip().startswith("-") or _looks_like_role(t):
+                            if not role:
+                                role = clean_text(t.lstrip("-").strip())
+                            continue
+
+                        # address lines
+                        if _looks_like_address(t) or residence_parts:
+                            residence_parts.append(t)
+                            continue
+
+                        # anything else -> ignore
+
+                    if role:
+                        p["role"] = role
+                    if since:
+                        p["since"] = since
+                    if until:
+                        p["until"] = until
+                    if birth_date:
+                        p["birth_date"] = birth_date
+                    if residence_parts:
+                        p["residence_address"] = " / ".join(residence_parts)
+
+                    people.append(p)
+
+                # dedupe by (name, role) keep order
+                seen = set()
+                out = []
+                for p in people:
+                    k = (_norm(p.get("name", "")), _norm(p.get("role", "")))
+                    if k[0] and k not in seen:
+                        seen.add(k)
+                        out.append(p)
+                return out
+
+            # Fallback (no anchors): use get_text lines with strong heuristics
+            txt = names_td.get_text(separator="\n", strip=True)
+            lines = [clean_text(x) for x in (txt or "").split("\n")]
+            lines = [x for x in lines if x]
+
+            cur = None
+            for line in lines:
+                l = _norm(line)
+                if _is_stop_person(line):
+                    continue
+                if l.startswith("vznik funkcie:") or l.startswith("zánik funkcie:") or l.startswith("dátum narodenia:"):
+                    if cur:
+                        key = l.split(":", 1)[0]
+                        val = clean_text(line.split(":", 1)[1])
+                        if "vznik" in key:
+                            cur["since"] = val
+                        elif "zánik" in key or "zanik" in key:
+                            cur["until"] = val
+                        else:
+                            cur["birth_date"] = val
+                    continue
+
+                # start a person ONLY if line looks like name:
+                # require 2+ words and no digits and not role and not address
+                looks_name = (not re.search(r"\d", line)) and (len(line.split()) >= 2) and (not _looks_like_role(line))
+                if looks_name:
+                    if cur:
+                        people.append(cur)
+                    cur = {"name": line}
+                    continue
+
+                if cur:
+                    if (line.strip().startswith("-") or _looks_like_role(line)) and not cur.get("role"):
+                        cur["role"] = clean_text(line.lstrip("-").strip())
+                    elif _looks_like_address(line) or cur.get("residence_address"):
+                        cur["residence_address"] = (cur.get("residence_address", "") + " / " + line).strip(" /")
+
+            if cur:
+                people.append(cur)
+
+            # final filter: remove any that accidentally are places
+            people = [p for p in people if p.get("name") and not _is_stop_person(p["name"])]
+            return people
 
         # Helper to find value next to label
         def get_value(label_pattern):
@@ -316,37 +508,25 @@ class OrsrProvider:
                 elif "," in raw_address:
                      data["city"] = raw_address.split(",")[-1].strip()
 
-        # 4. Štatutárny orgán (Konatelia)
+        # 4. Štatutárny orgán (Konatelia / Predstavenstvo)
         stat_tds = [td for td in soup.find_all("td") if "Štatutárny orgán:" in td.get_text()]
         if stat_tds:
             stat_td = stat_tds[0]
             names_td = stat_td.find_next_sibling("td")
             if names_td:
-                content = names_td.get_text(separator="\n", strip=True)
-                lines = content.split("\n")
-                for line in lines:
-                    line = clean_text(line)
-                    if not line: continue
-                    if "Vznik funkcie:" in line or "Spôsob konania:" in line or "Typ:" in line: continue
-                    if re.search(r"\d", line) and not re.search(r"Ing\.|Mgr\.|JUDr\.", line): continue # Address heuristic
-                    if len(line) > 3:
-                        data["executives"].append(line)
+                people = _parse_people_from_names_td(names_td, mode="executives")
+                data["executive_people"] = people  # structured (optional)
+                data["executives"] = _unique_keep_order([p["name"] for p in people if p.get("name")])
 
-        # 5. Spoločníci
-        spol_tds = [td for td in soup.find_all("td") if "Spoločníci:" in td.get_text()]
+        # 5. Spoločníci (Owners)
+        spol_tds = [td for td in soup.find_all("td") if "Spoločníci:" in td.get_text() or "Akcionár" in td.get_text()]
         if spol_tds:
             spol_td = spol_tds[0]
             names_td = spol_td.find_next_sibling("td")
             if names_td:
-                content = names_td.get_text(separator="\n", strip=True)
-                lines = content.split("\n")
-                for line in lines:
-                    line = clean_text(line)
-                    if not line: continue
-                    if "Vklad:" in line or "Splatené:" in line or "Osoba je" in line: continue
-                    if re.search(r"\d", line) and not re.search(r"Ing\.|Mgr\.|JUDr\.", line): continue
-                    if len(line) > 3:
-                        data["shareholders"].append(line)
+                people = _parse_people_from_names_td(names_td, mode="shareholders")
+                data["shareholder_people"] = people  # structured (optional)
+                data["shareholders"] = _unique_keep_order([p["name"] for p in people if p.get("name")])
 
         # 6. Deň zápisu
         data["founded"] = get_value("Deň zápisu:")
@@ -354,10 +534,8 @@ class OrsrProvider:
         # Status check
         if "likvidácia" in str(soup).lower() or "konkurz" in str(soup).lower():
             data["status"] = "Likvidácia/Konkurz"
-        
-        # Deduplicate names
-        data["executives"] = list(set(data["executives"]))
-        data["shareholders"] = list(set(data["shareholders"]))
+
+        # stable dedupe already done above (do NOT use set() here)
 
 
         

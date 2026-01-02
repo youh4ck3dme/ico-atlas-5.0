@@ -15,12 +15,12 @@ const getApiUrl = () => {
     return apiUrl;
   }
 
-  // Ak je frontend na HTTPS, použij HTTPS aj pre backend
+  // Ak je frontend na HTTPS, predpokladáme produkciu a použijeme relatívnu cestu
   if (isHTTPS) {
-    return 'https://localhost:8000';
+    return '';
   }
 
-  // Inak použij HTTP
+  // Inak použij HTTP localhost (pre dev)
   return 'http://localhost:8000';
 };
 

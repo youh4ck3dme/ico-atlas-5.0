@@ -15,10 +15,13 @@ const Footer = () => {
             <div className="mb-4">
               <Logo size="small" showText={true} />
             </div>
-            <p className="text-sm text-gray-400">
-              Business Intelligence & Visualization pre V4 región. 
+            <p className="text-sm text-gray-400 mb-4">
+              Business Intelligence & Visualization pre V4 región.
               Demokratizácia prístupu k dátam pre malé a stredné podniky.
             </p>
+            <Link to="/about" className="text-[#D4AF37] hover:text-[#FFD700] text-sm font-medium transition-colors">
+              Viac o projekte →
+            </Link>
           </div>
 
           {/* Právne dokumenty */}
@@ -69,6 +72,11 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
+                <Link to="/contact" className="hover:text-[#FFD700] transition-colors text-white font-medium">
+                  Kontaktný formulár
+                </Link>
+              </li>
+              <li>
                 <a href="mailto:support@crossbordernexus.com" className="hover:text-[#FFD700] transition-colors text-gray-300">
                   support@crossbordernexus.com
                 </a>
@@ -82,7 +90,7 @@ const Footer = () => {
                 Pre otázky týkajúce sa GDPR a ochrany údajov
               </li>
               <li className="text-gray-400 text-xs mt-3">
-                Cross-Border Nexus s.r.o.<br/>
+                Cross-Border Nexus s.r.o.<br />
                 Bratislava, Slovensko
               </li>
             </ul>
@@ -95,7 +103,7 @@ const Footer = () => {
               Dôležité
             </h4>
             <p className="text-sm text-gray-400 mb-3">
-              Dáta zobrazené na portáli sú agregované z verejných zdrojov. 
+              Dáta zobrazené na portáli sú agregované z verejných zdrojov.
               Slúžia výhradne na podporu rozhodovania a nenahrádzajú oficiálne právne úkony.
             </p>
             <p className="text-xs text-gray-500 italic">
@@ -106,7 +114,7 @@ const Footer = () => {
 
         {/* Disclaimer s zdrojmi dát */}
         <div className="border-t border-[#D4AF37]/20 mt-8 pt-6">
-          <Disclaimer 
+          <Disclaimer
             compact={true}
             sources={[
               { name: 'Obchodný register SR (ORSR)', url: 'https://www.orsr.sk' },
