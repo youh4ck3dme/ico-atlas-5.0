@@ -93,6 +93,33 @@ class CompanyCache(Base):
         }
 
 
+class GraphNode(Base):
+    """Uzol grafu (Firma, Osoba, Adresa)"""
+    __tablename__ = "graph_nodes"
+
+    id = Column(String(50), primary_key=True)  # custom ID: country_ico OR pers_country_hash
+    label = Column(String(500))
+    type = Column(String(50), index=True)  # company, person, address
+    country = Column(String(2), index=True)
+    details = Column(JSON)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
+class GraphEdge(Base):
+    """Hrana grafu (Vzťah)"""
+    __tablename__ = "graph_edges"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    source = Column(String(50), index=True)
+    target = Column(String(50), index=True)
+    type = Column(String(50), index=True)  # OWNED_BY, MANAGED_BY
+    weight = Column(Float, default=1.0)
+    details = Column(JSON)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
 class Analytics(Base):
     """Analytics a štatistiky"""
 

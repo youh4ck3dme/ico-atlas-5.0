@@ -41,13 +41,13 @@ Write-Host "[2/4] Uploading Files to VPS..." -ForegroundColor Yellow
 ssh -i $LOCAL_KEY_PATH -o StrictHostKeyChecking=no $VPS_USER@$VPS_IP "mkdir -p $REMOTE_TMP"
 
 # Upload Configs & Script
-scp -i $LOCAL_KEY_PATH "$DEPLOY_DIR_LOCAL\deploy_native.sh" "$VPS_USER@$VPS_IP:$REMOTE_TMP/"
-scp -i $LOCAL_KEY_PATH "$DEPLOY_DIR_LOCAL\pro.icoatlas.sk.conf" "$VPS_USER@$VPS_IP:$REMOTE_TMP/"
-scp -i $LOCAL_KEY_PATH "$DEPLOY_DIR_LOCAL\icoatlas-pro-api.service" "$VPS_USER@$VPS_IP:$REMOTE_TMP/"
+scp -i $LOCAL_KEY_PATH "$DEPLOY_DIR_LOCAL\deploy_native.sh" "$($VPS_USER)@$($VPS_IP):$($REMOTE_TMP)/"
+scp -i $LOCAL_KEY_PATH "$DEPLOY_DIR_LOCAL\pro.icoatlas.sk.conf" "$($VPS_USER)@$($VPS_IP):$($REMOTE_TMP)/"
+scp -i $LOCAL_KEY_PATH "$DEPLOY_DIR_LOCAL\icoatlas-pro-api.service" "$($VPS_USER)@$($VPS_IP):$($REMOTE_TMP)/"
 
 # Upload Backend Zip
 Write-Host "Uploading backend.zip (this may take a moment)..."
-scp -i $LOCAL_KEY_PATH $ZipPath "$VPS_USER@$VPS_IP:$REMOTE_TMP/"
+scp -i $LOCAL_KEY_PATH $ZipPath "$($VPS_USER)@$($VPS_IP):$($REMOTE_TMP)/"
 
 Write-Host "Files uploaded." -ForegroundColor Green
 

@@ -110,6 +110,7 @@ from services.risk_intelligence import (
 )
 from services.search_by_name import search_by_name
 from services.sk_orsr_provider import get_orsr_provider
+from services.graph_service import graph_service
 
 # Import nových služieb
 from services.sk_rpo import (
@@ -1920,6 +1921,7 @@ async def search_company(
     q: str,
     country: Optional[str] = None,
     force_refresh: bool = False,
+    graph: int = 0,
     request: Request = None,  # type: ignore[assignment]
     response_model_examples={
         "slovak_ico": {"summary": "Slovak IČO search", "value": {"q": "88888888"}},
@@ -2289,7 +2291,41 @@ async def search_company(
         if debt_result and debt_result.get("data", {}).get("has_debt"):
             company_name += " [DLH]"
 
+        # --- GRAPH SERVICE INGESTION (ILLUMINATI V1) ---
+        # Posielame structured people (executive_people, shareholder_people) pre linking
+        try:
+            graph_service.ingest_company_relationships(
+                atlas_id=query_clean,
+                country="SK",
+                company_label=company_name,
+                address=normalized.get("address", {}) if isinstance(normalized.get("address"), dict) else {"raw": str(normalized.get("address", ""))},
+                executives=normalized.get("executives", []),
+                owners=normalized.get("shareholders", []),
+                executive_people=normalized.get("executive_people", []),
+                shareholder_people=normalized.get("shareholder_people", []),
+                source="ORSR" if orsr_data else "RPO"
+            )
+        except Exception as e:
+            print(f"⚠️ Graph Ingest Error: {e}")
+
+        # Ak klient chce 2nd-hop graf (graph=1)
+        if graph == 1:
+            try:
+                g_data = graph_service.build_company_graph(query_clean, "SK")
+                # Namapovať dict na GraphResponse (nodes/edges objekty)
+                g_nodes = [Node(**n) for n in g_data.get("nodes", [])]
+                g_edges = [Edge(**e) for e in g_data.get("edges", [])]
+                
+                result = GraphResponse(nodes=g_nodes, edges=g_edges)
+                
+                # Cache full graph? Možno, ale zatiaľ len search
+                # set(cache_key, result.dict()) 
+                return result
+            except Exception as e:
+                print(f"⚠️ Graph Build Error, falling back to basic: {e}")
+        
         # Build detailed company info from enhanced ORSR data
+
         company_details = []
         if normalized.get("ico"):
             company_details.append(f"IČO: {normalized['ico']}")
