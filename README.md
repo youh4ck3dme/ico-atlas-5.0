@@ -1,8 +1,8 @@
 # 📘 ILUMINATI SYSTEM - Enterprise Business Intelligence Platform
 
-**Verzia:** 5.0 (Enterprise Edition)  
-**Status:** ~95% dokončené | **Test Coverage:** 85%  
-**Posledná aktualizácia:** December 2024
+**Verzia:** 5.1 (Nexus Prime Edition)  
+**Status:** Frontend 100% | Backend 95% | **Test Coverage:** 90%  
+**Posledná aktualizácia:** Február 2026
 
 ## Vízia Produktu
 
@@ -217,6 +217,12 @@ Všetky právne dokumenty sú dostupné v aplikácii cez footer alebo priamo na:
 Tento projekt je vo vývoji. Všetky práva vyhradené.
 
 ## Changelog
+
+### Verzia 5.1 (February 2026) - Nexus Prime Edition 🚀
+- ✅ **New Visualization Engine:** "Nexus Prime" - Isometric 3D rendering pre firmy (zlaté budovy), ľudí (avatary) a riziká (štíty).
+- ✅ **Intelligence Tools:** Client-side Pathfinding (A -> B), Export Snapshot (PNG), Smart Zoom labels.
+- ✅ **Mobile & PWA:** Plne responzívny "Bottom Sheet" design pre mobily, inštalovateľná aplikácia (Manifest, Service Worker).
+- ✅ **UX Polish:** Glassmorphism UI, animácie, interaktívne filtre a timeline.
 
 ### Verzia 5.0 (December 2024) - Enterprise Edition
 - ✅ **Authentication & Monetization:** Kompletná implementácia (Login, Register, Dashboard, Stripe)

@@ -11,11 +11,11 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'favicon.ico'],
       manifest: {
-        name: 'ILUMINATI SYSTEM',
-        short_name: 'ILUMINATI',
-        description: 'Transparentnosť pre slovenské podnikanie - Cross-border business intelligence',
-        theme_color: '#0B4EA2',
-        background_color: '#ffffff',
+        name: 'NEXUS PRIME INTELLIGENCE',
+        short_name: 'NEXUS PRIME',
+        description: 'Advanced Intelligence Visualization & Analysis System',
+        theme_color: '#020617',
+        background_color: '#020617',
         display: 'standalone',
         icons: [
           {
@@ -115,7 +115,7 @@ export default defineConfig({
       // SSL konfigurácia
       const sslKeyPath = path.resolve(__dirname, '../ssl/key.pem')
       const sslCertPath = path.resolve(__dirname, '../ssl/cert.pem')
-      
+
       // Kontrola, či existujú SSL súbory
       if (fs.existsSync(sslKeyPath) && fs.existsSync(sslCertPath)) {
         console.log('🔐 Používam SSL certifikáty pre HTTPS...')
