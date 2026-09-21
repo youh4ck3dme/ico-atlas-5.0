@@ -1,0 +1,29 @@
+{
+  "include": [
+    ".",
+    "../backend"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.*"
+  ],
+  "executionEnvironments": [
+    {
+      "root": ".",
+      "pythonVersion": "3.14",
+      "pythonPlatform": "Darwin",
+      "extraPaths": [
+        "../backend",
+        "../.venv/lib/python3.14/site-packages"
+      ]
+    }
+  ],
+  "venvPath": "..",
+  "venv": ".venv",
+  "pythonVersion": "3.14",
+  "typeCheckingMode": "basic",
+  "reportMissingImports": "none",
+  "reportMissingModuleSource": "none",
+  "reportMissingTypeStubs": "none"
+}

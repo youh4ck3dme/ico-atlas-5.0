@@ -1,55 +1,70 @@
-# Dependencies
-/node_modules
-/vendor
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/venv/
+backend/.venv/
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
 
-# Build
-/public/hot
-/public/storage
-/public/build
-
-# Environment
-.env
-.env.backup
-.env.production
-.phpunit.result.cache
+# Node.js
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.cache/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
 # IDE
-.idea
-.vscode
+.vscode/
+.idea/
 *.swp
 *.swo
 *~
-.project
-.settings
-.buildpath
-
-# OS
 .DS_Store
-Thumbs.db
 
-# Laravel
-/storage/*.key
-/storage/framework/cache/data/*
-/storage/framework/sessions/*
-/storage/framework/views/*
-/storage/framework/testing/*
-/storage/logs/*
-!/storage/framework/cache/data/.gitignore
-!/storage/framework/sessions/.gitignore
-!/storage/framework/views/.gitignore
-!/storage/logs/.gitignore
-
-# NPM
-npm-debug.log
-yarn-error.log
-yarn.lock
-package-lock.json
+# Environment variables
+.env
+.env.local
+.env.*.local
 
 # Testing
-Homestead.json
-Homestead.yaml
-auth.json
+.coverage
+.pytest_cache/
+test-results/
 
-# Misc
+# Logs
+logs/
 *.log
-.phpunit.cache
+/tmp/
+
+# Documentation (generated)
+docs/_build/
+
+# Build outputs
+*.pyc
+*.pyo
+*.pyd
+
+# SSL Certificates (self-signed for local development)
+ssl/*.pem
+ssl/*.key
+ssl/*.crt
+ssl/*.cert
+
+
+# Database
+*.db
+backend/sql_app.db

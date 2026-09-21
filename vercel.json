@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "ico-atlas/public/index.php",
+      "use": "@vercel/php"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/build/(.*)",
+      "dest": "/ico-atlas/public/build/$1"
+    },
+    {
+      "src": "/(.*\\.(js|css|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot))",
+      "dest": "/ico-atlas/public/$1"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/ico-atlas/public/index.php"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/ico-atlas/public/index.php"
+    }
+  ],
+  "env": {
+    "APP_ENV": "production",
+    "APP_DEBUG": "false"
+  }
+}
+

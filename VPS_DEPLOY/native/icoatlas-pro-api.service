@@ -1,0 +1,15 @@
+[Unit]
+Description=ICOAtlas Pro API (FastAPI)
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/icoatlas-pro
+ExecStart=/var/www/icoatlas-pro/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000 --proxy-headers --forwarded-allow-ips="*"
+Restart=always
+RestartSec=2
+EnvironmentFile=/var/www/icoatlas-pro/.env
+
+[Install]
+WantedBy=multi-user.target

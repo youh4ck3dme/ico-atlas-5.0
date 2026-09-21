@@ -17,9 +17,11 @@ jobs:
         node-version: '18'
         
     - name: Install dependencies
+      working-directory: ico-atlas
       run: npm ci
       
     - name: Build assets
+      working-directory: ico-atlas
       run: npm run build
       
     - name: Deploy

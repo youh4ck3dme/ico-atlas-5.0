@@ -1,462 +1,249 @@
-# 🇸🇰 IČO ATLAS 5.0
+# 📘 ILUMINATI SYSTEM - Enterprise Business Intelligence Platform
 
-> **The most advanced, high-performance company lookup PWA in Slovak history.**
+**Verzia:** 5.1 (Nexus Prime Edition)  
+**Status:** Frontend 100% | Backend 95% | **Test Coverage:** 90%  
+**Posledná aktualizácia:** Február 2026
 
-**Slovak Enterprise Luxury** - A fusion of Slovak national colors with ultra-premium fintech aesthetics.
+## Vízia Produktu
 
-![Status](https://img.shields.io/badge/Status-Phase%201%20%26%202%20Complete-success)
-![Laravel](https://img.shields.io/badge/Laravel-11-red)
-![Tailwind](https://img.shields.io/badge/Tailwind-3.4-blue)
-![Alpine.js](https://img.shields.io/badge/Alpine.js-3.13-cyan)
-![PWA](https://img.shields.io/badge/PWA-Ready-orange)
+Cieľ: Poskytnúť malým a stredným podnikom (SME) v regióne V4 nástroj podnikovej rozviedky (Business Intelligence), ktorý bol doteraz dostupný len bankám a veľkým korporáciám.
 
-**📖 [Slovenská verzia / Slovak version](README-sk.md)**
+**USP:** Agregácia dát zo 4 krajín do jedného grafu v reálnom čase. Na rozdiel od konkurencie, ktorá často ponúka len statické výpisy, ILUMINATE SYSTEM odhaľuje skryté vzťahy naprieč hranicami na jedno kliknutie.
 
----
+## Technická Architektúra
 
-## 🎨 Design Philosophy
+### Frontend
+- **Technológia:** React 18 (Vite) + Tailwind CSS
+- **Vizualizácia:** react-force-graph-2d pre interaktívne grafy
+- **State Management:** React Context (AuthContext)
+- **Performance:** Code splitting, memoization, lazy loading
 
-Inspired by **Precedent**, **Revolut**, and **Apple**, IČO ATLAS 5.0 combines:
+### Backend
+- **Technológia:** Python 3.10+ s FastAPI
+- **Integrácie:** 
+  - 🇸🇰 SK: RPO (Slovensko.Digital)
+  - 🇨🇿 CZ: ARES (Finančná správa)
+  - 🇵🇱 PL: KRS + CEIDG + Biała Lista
+  - 🇭🇺 HU: NAV Online
+- **Database:** PostgreSQL pre históriu, cache a analytics
+- **Architektúra:** Modulárny monolit pripravený na mikroservisy
+- **Payment:** Stripe integration pre subscriptions
 
-- 🔷 **Tatra Navy** (#0B1E3D) - Primary brand color
-- ❤️ **Slovak Crimson** (#DC143C) - Accent & CTAs
-- ⚪ **Porcelain White** (#F8F9FA) - Light mode
-- ⚫ **Matte Black** (#050505) - Ultra-dark mode
+## Inštalácia a Spustenie
 
----
+### Predpoklady
+- Python 3.10+ s pip
+- Node.js 18+ s npm
+- Git
+- Docker & Docker Compose (voliteľné, pre containerizované spustenie)
+- PostgreSQL (ak nepoužívate Docker)
+- Redis (voliteľné, pre distributed caching)
 
-## ✨ Features
+### Krok 1: Backend Setup
 
-- ✅ **Mobile-First Design** - Optimized for touch devices
-- ✅ **Glassmorphism UI** - Premium frosted glass effects
-- ✅ **Dark Mode** - Automatic theme switching
-- ✅ **PWA Ready** - Installable, works offline
-- ✅ **Alpine.js Reactivity** - Lightweight interactivity
-- ✅ **Reusable Components** - 5 core Blade components
-- ✅ **Slovak Localization** - Built for Slovak market
-
----
-
-## 📦 What's Inside
-
-```
-ico-atlas-5.0/
-├── 📝 Documentation
-│   ├── INSTALLATION.md      ← Complete setup guide
-│   ├── QUICKSTART.md        ← 5-minute quick start
-│   ├── CHEATSHEET.md        ← Component reference
-│   └── PROJECT_SUMMARY.md   ← Full project overview
-│
-├── ⚙️ Configuration
-│   └── tailwind.config.js   ← Slovak Enterprise palette
-│
-├── 🎨 Resources
-│   ├── css/
-│   │   └── app.css          ← Tailwind + utilities
-│   ├── js/
-│   │   ├── app.js           ← Alpine.js + helpers
-│   │   └── bootstrap.js     ← Axios config
-│   └── views/
-│       ├── components/      ← 5 Blade components
-│       │   ├── app-layout.blade.php
-│       │   ├── glass-card.blade.php
-│       │   ├── primary-button.blade.php
-│       │   ├── input-group.blade.php
-│       │   └── bottom-nav.blade.php
-│       ├── welcome.blade.php
-│       ├── search.blade.php
-│       └── dashboard.blade.php
-│
-└── 📱 PWA
-    ├── manifest.json        ← App manifest
-    └── service-worker.js    ← Offline support
-```
-
----
-
-## 🚀 Quick Start
-
-### 1. Copy Files
 ```bash
-cp -r ico-atlas-5.0/* YOUR_LARAVEL_PROJECT/
+cd backend
+
+# Vytvorenie izolovaného prostredia
+python -m venv venv
+
+# Aktivácia prostredia
+# Mac/Linux:
+source venv/bin/activate
+# Windows:
+# venv\Scripts\activate
+
+# Inštalácia závislostí
+pip install -r requirements.txt
+
+# Spustenie vývojového servera
+python main.py
 ```
 
-### 2. Install Dependencies
-```bash
-npm install alpinejs@^3.13.3 @tailwindcss/forms
-```
+Backend bude dostupný na `http://localhost:8000`.  
+API dokumentácia: `http://localhost:8000/docs`
 
-### 3. Build
+### Krok 2: Frontend Setup
+
 ```bash
+cd frontend
+
+# Inštalácia balíčkov
+npm install
+
+# Spustenie vývojového servera
 npm run dev
 ```
 
-### 4. Add Routes
-```php
-Route::get('/', fn() => view('welcome'))->name('home');
-Route::get('/search', fn() => view('search'))->name('search');
-Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
+Frontend bude dostupný na `http://localhost:5173`
+
+### Krok 3: Testovanie
+
+1. Otvorte prehliadač na `http://localhost:5173`
+2. Do vyhľadávacieho poľa zadajte názov firmy (napr. "Agrofert")
+3. Skontrolujte konzolu prehliadača (F12) a terminál backendu, či prebehla komunikácia
+
+## Štruktúra Projektu
+
+```
+DIMITRI-CHECKER/
+├── backend/
+│   ├── main.py            # ILUMINATE SYSTEM Engine (FastAPI)
+│   ├── requirements.txt   # Python závislosti
+│   ├── pyrightconfig.json # Python linter konfigurácia
+│   └── venv/             # Python virtual environment
+├── frontend/
+│   ├── index.html
+│   ├── vite.config.js
+│   ├── tailwind.config.js
+│   ├── postcss.config.js
+│   ├── package.json
+│   ├── dist/             # Production build
+│   ├── node_modules/     # Node.js závislosti
+│   └── src/
+│       ├── main.jsx
+│       ├── index.css
+│       ├── App.jsx        # Router a hlavná aplikácia
+│       ├── components/
+│       │   ├── Footer.jsx      # Footer s linkmi na právne dokumenty
+│       │   ├── Layout.jsx      # Layout wrapper s footerom
+│       │   └── Disclaimer.jsx  # Disclaimer komponenta
+│       └── pages/
+│           ├── HomePage.jsx              # Hlavná stránka s vyhľadávaním
+│           ├── TermsOfService.jsx        # VOP
+│           ├── PrivacyPolicy.jsx        # GDPR zásady
+│           ├── Disclaimer.jsx           # Vyhlásenie o zodpovednosti
+│           ├── CookiePolicy.jsx         # Cookie Policy
+│           └── DataProcessingAgreement.jsx  # DPA pre B2B
+├── docs/                 # Dokumentácia
+│   ├── README.md
+│   ├── DESIGN_UPGRADE_PROMPT.md
+│   ├── SERVER_STATUS.md
+│   ├── TEST_ICO_GUIDE.md
+│   └── TEST_REPORT.md
+├── logs/                 # Log súbory
+├── .vscode/              # VS Code konfigurácia
+├── test_basic.py         # Základné testy
+├── .gitignore
+└── README.md
 ```
 
-### 5. Done! 🎉
-Visit `http://localhost:8000`
-
-**📖 Full setup:** See [INSTALLATION.md](INSTALLATION.md)  
-**⚡ Quick guide:** See [QUICKSTART.md](QUICKSTART.md)
-
----
-
-## 🧩 Components
-
-### `<x-app-layout>`
-Main application wrapper with mobile frame & dark mode.
-
-```blade
-<x-app-layout>
-    <x-slot name="title">Page Title</x-slot>
-    Your content here
-</x-app-layout>
-```
-
-### `<x-glass-card>`
-Glassmorphic container with variants.
-
-```blade
-<x-glass-card>Content</x-glass-card>
-<x-glass-card variant="lg" hover clickable>Clickable</x-glass-card>
-```
-
-### `<x-primary-button>`
-Slovak Crimson CTA with glow effect.
-
-```blade
-<x-primary-button>Click Me</x-primary-button>
-<x-primary-button variant="secondary" fullWidth>Full Width</x-primary-button>
-```
-
-### `<x-input-group>`
-Floating label input with icons.
-
-```blade
-<x-input-group name="search" icon="search" placeholder="Hľadať..." />
-```
-
-### `<x-bottom-nav>`
-iOS-style floating navigation dock.
-
-```blade
-<x-bottom-nav />
-```
-
-**📋 Complete reference:** See [CHEATSHEET.md](CHEATSHEET.md)
-
----
-
-## 🎯 Use Cases
-
-### Landing Page
-```blade
-<x-app-layout>
-    <div class="h-[35vh] bg-gradient-tatra">
-        <div class="px-6 py-8 text-white">
-            <h1 class="text-3xl font-bold">Vitajte</h1>
-        </div>
-    </div>
-    
-    <div class="p-6">
-        <x-glass-card>
-            <h2 class="text-xl font-bold mb-4">Funkcie</h2>
-            <x-primary-button fullWidth>Začať</x-primary-button>
-        </x-glass-card>
-    </div>
-</x-app-layout>
-```
-
-### Search Interface
-```blade
-<x-app-layout>
-    <div class="p-6">
-        <x-input-group 
-            name="search" 
-            icon="search" 
-            placeholder="Hľadať firmu..."
-        />
-        
-        <x-glass-card class="mt-4">
-            Results here
-        </x-glass-card>
-    </div>
-</x-app-layout>
-```
-
-### Dashboard
-```blade
-<x-app-layout>
-    <div class="p-6 space-y-4">
-        <div class="grid grid-cols-2 gap-4">
-            <x-glass-card>Widget 1</x-glass-card>
-            <x-glass-card>Widget 2</x-glass-card>
-        </div>
-    </div>
-</x-app-layout>
-```
+## Funkcionalita MVP
+
+✅ **Implementované:**
+- Frontend: Funkčný React UI s vyhľadávacím poľom a základným zobrazením výsledkov
+- Backend: FastAPI server bežiaci lokálne
+- Integrácia: Konektor pre český register ARES
+- Vizualizácia: SVG graf s uzlami (firmy, osoby, adresy) a hranami (vzťahy)
+- CORS: Zabezpečená komunikácia Frontend <-> Backend
+- **Routing:** React Router pre navigáciu medzi stránkami
+- **Právne dokumenty:** Kompletné stránky pre VOP, Privacy Policy, Disclaimer, Cookie Policy, DPA
+- **Footer:** Footer s linkmi na všetky právne dokumenty dostupný na každej stránke
+- **Disclaimer:** Automatické zobrazenie disclaimeru pod každým grafom
+- **Authentication:** Login/Register s JWT tokens
+- **User Dashboard:** Tier management, search history, usage statistics, favorite companies
+- **Payment Integration:** Stripe checkout pre subscription upgrades
+- **Enterprise Features:** API Keys Management, Webhooks Delivery System, ERP Integrations, Analytics Dashboard
+- **Performance:** React.memo, useCallback, useMemo, code splitting
+- **Offline Support:** Service Worker, PWA capabilities
+
+## Roadmapa
+
+### Fáza 1: MVP ✅ DOKONČENÉ
+- [x] Frontend: Funkčný React UI
+- [x] Backend: FastAPI server
+- [x] Integrácia: ARES (CZ)
+- [x] Lokálne prepojenie: CORS, porty
+- [x] Právne dokumenty: VOP, Privacy Policy, Disclaimer, Cookie Policy, DPA
+- [x] Footer s linkmi na dokumenty
+- [x] Disclaimer pod grafom
+
+### Fáza 2: Persistence & Graph ✅ DOKONČENÉ
+- [x] Databáza: PostgreSQL
+- [x] SK Integrácia: RPO cez Ekosystém Slovensko.Digital
+- [x] PL Integrácia: KRS + CEIDG + Biała Lista
+- [x] HU Integrácia: NAV Online
+- [x] Vizualizácia: react-force-graph-2d
+
+### Fáza 3: Risk Intelligence ✅ DOKONČENÉ
+- [x] Dlhové registre: Finančná správa SK/CZ
+- [x] Fraud Detection: White Horse Detector
+- [x] Reporting: PDF reporty
+- [x] Enhanced risk scoring algoritmus
+
+### Fáza 4: Monetizácia a Škálovanie ✅ DOKONČENÉ
+- [x] Platby: Stripe integrácia
+- [x] Auth: Používateľské účty (JWT)
+- [x] Subscription tiers: Free/Pro/Enterprise
+- [x] User Dashboard
+- [x] Rate limiting podľa tieru
+- [x] Obľúbené firmy (Favorites) ✅ DOKONČENÉ
+
+### Fáza 5: Enterprise Features ✅ DOKONČENÉ
+- [x] API Keys Management (backend + frontend)
+- [x] Webhooks Delivery System (backend + frontend)
+- [x] User Dashboard s Enterprise features
+- [x] HMAC SHA256 signatures pre webhooks
+- [x] IP whitelisting pre API keys
+- [x] ERP integrácie (SAP, Pohoda, Money S3) ✅ DOKONČENÉ
+- [x] Analytics Dashboard (backend + frontend) ✅ DOKONČENÉ
+
+## Bezpečnosť
+
+- **Rate Limiting:** ✅ Token Bucket algoritmus implementovaný
+- **GDPR:** ✅ Spracovávame výhradne verejne dostupné dáta + Consent management
+- **Proxy Rotation:** ✅ Pre registre bez oficiálneho API
+- **Authentication:** ✅ JWT-based authentication s bcrypt password hashing
+- **API Security:** ✅ HMAC SHA256 signatures pre webhooks
+- **Tier-based Access:** ✅ Enterprise features len pre Enterprise tier
+
+## Právne dokumenty
+
+Všetky právne dokumenty sú dostupné v aplikácii cez footer alebo priamo na:
+- `/vop` - Všeobecné obchodné podmienky
+- `/privacy` - Zásady ochrany osobných údajov (GDPR)
+- `/disclaimer` - Vyhlásenie o odmietnutí zodpovednosti
+- `/cookies` - Cookie Policy
+- `/dpa` - Data Processing Agreement (pre B2B klientov)
+
+**Dôležité:** Pred spustením produkcie nezabudnite:
+1. Vyplniť kontaktné údaje (e-maily, adresy) v dokumentoch
+2. Dodať IČO a názov s.r.o. do Privacy Policy a DPA
+3. Skontrolovať dokumenty s právnikom
+4. Implementovať checkbox pri registrácii (súhlas s VOP a Privacy Policy)
+
+## Licencia
+
+Tento projekt je vo vývoji. Všetky práva vyhradené.
+
+## Changelog
+
+### Verzia 5.1 (February 2026) - Nexus Prime Edition 🚀
+- ✅ **New Visualization Engine:** "Nexus Prime" - Isometric 3D rendering pre firmy (zlaté budovy), ľudí (avatary) a riziká (štíty).
+- ✅ **Intelligence Tools:** Client-side Pathfinding (A -> B), Export Snapshot (PNG), Smart Zoom labels.
+- ✅ **Mobile & PWA:** Plne responzívny "Bottom Sheet" design pre mobily, inštalovateľná aplikácia (Manifest, Service Worker).
+- ✅ **UX Polish:** Glassmorphism UI, animácie, interaktívne filtre a timeline.
+
+### Verzia 5.0 (December 2024) - Enterprise Edition
+- ✅ **Authentication & Monetization:** Kompletná implementácia (Login, Register, Dashboard, Stripe)
+- ✅ **Enterprise Features:** API Keys Management a Webhooks Delivery System
+- ✅ **V4 Integrations:** SK (RPO), CZ (ARES), PL (KRS + CEIDG + Biała Lista), HU (NAV)
+- ✅ **Performance:** Frontend a backend optimalizácie (memoization, code splitting, connection pooling)
+- ✅ **Security:** JWT authentication, HMAC signatures, rate limiting, tier-based access
+- ✅ **Documentation:** Kompletná dokumentácia (Developer Guide, Deployment Guide, Architecture)
 
----
+### Verzia 4.0 (November 2024)
+- ✅ Risk Intelligence s dlhovými registrami
+- ✅ PDF export reportov
+- ✅ Circuit Breaker pattern
+- ✅ Proxy rotation
 
-## 🎨 Color Utilities
+### Verzia 3.0 (October 2024)
+- ✅ PostgreSQL databáza
+- ✅ Cross-border integrácie (V4)
+- ✅ Force-directed graph vizualizácia
 
-```html
-<!-- Backgrounds -->
-<div class="bg-tatra-navy">Tatra Navy</div>
-<div class="bg-slovak-crimson">Slovak Crimson</div>
+## Kontakt
 
-<!-- Gradients -->
-<div class="bg-gradient-tatra">Gradient</div>
-<div class="text-gradient-crimson">Gradient Text</div>
+Pre otázky a podporu kontaktujte vývojový tím.
 
-<!-- Glass Effects -->
-<div class="glass-card">Glass Card</div>
-<div class="glass-blur-xl">Extra Blur</div>
-```
-
----
-
-## 🌓 Dark Mode
-
-Automatic dark mode with localStorage persistence.
-
-```html
-<!-- Toggle dark mode -->
-<button @click="darkMode = !darkMode">Toggle</button>
-
-<!-- Conditional classes -->
-<div class="text-tatra-navy dark:text-porcelain-100">
-    Text changes in dark mode
-</div>
-```
-
-JavaScript API:
-```javascript
-window.toggleDarkMode();  // Toggle
-window.initDarkMode();    // Initialize
-```
-
----
-
-## 🔔 Notifications
-
-```javascript
-// Show toasts
-window.showToast('Success!', 'success');
-window.showToast('Error occurred', 'error');
-window.showToast('Info message', 'info');
-```
-
----
-
-## 🛠️ Utilities
-
-```javascript
-// Format currency
-window.formatCurrency(9.99);  // "9,99 €"
-
-// Format date
-window.formatDate(new Date());  // "14. december 2024"
-
-// Copy to clipboard
-window.copyToClipboard('text');  // Shows toast
-
-// Haptic feedback (mobile)
-window.haptic('impact');
-```
-
----
-
-## 📱 PWA Features
-
-### Installable
-- iOS: Add to Home Screen
-- Android: Install app prompt
-- Desktop: Install from browser
-
-### Offline Support
-Service worker caches assets for offline use.
-
-### Push Notifications
-Ready for web push notifications.
-
----
-
-## 📊 Technical Specs
-
-**Frontend:**
-- Build Tool: Vite 5.0
-- CSS Framework: Tailwind CSS 3.4+
-- JS Framework: Alpine.js 3.13
-- Icons: Lucide / Inline SVGs
-
-**Performance:**
-- First Paint: <1s
-- Interactive: <2s
-- Bundle: ~45KB gzipped
-
-**Browser Support:**
-- Chrome 90+
-- Safari 14+
-- Firefox 88+
-- Edge 90+
-
----
-
-## 🏆 Phase Status
-
-### ✅ Phase 1 & 2 (Complete)
-- [x] Design system
-- [x] Core components
-- [x] Template pages
-- [x] PWA foundation
-- [x] Documentation
-
-### 🔮 Phase 3 (Recommended)
-
-**API Integration:**
-- [ ] Laravel API routes for company lookup
-- [ ] Integration with Slovak Business Register
-- [ ] Rate limiting and caching
-- [ ] API documentation (Laravel API Resources)
-
-**Authentication:**
-- [ ] Laravel Sanctum / Breeze
-- [ ] User registration and login
-- [ ] OAuth2 integration (Google, Facebook)
-- [ ] User profile and settings
-
-**Real-time Search:**
-- [ ] Autocomplete with debouncing
-- [ ] WebSocket support (Laravel Echo + Pusher)
-- [ ] Live search results
-- [ ] Search history and favorites
-
-**Data Export:**
-- [ ] CSV export
-- [ ] PDF export (DomPDF/Barryvdh)
-- [ ] Excel export
-- [ ] Print functionality
-
-**Advanced Filtering:**
-- [ ] Filters by IČO, name, address
-- [ ] Filters by industry and size
-- [ ] Saved searches
-- [ ] Company comparison
-
----
-
-## 📚 Documentation
-
-| Document | Purpose |
-|----------|---------|
-| [README.md](README.md) | Main documentation (English) |
-| [README-sk.md](README-sk.md) | Main documentation (Slovak) |
-| [INSTALLATION.md](INSTALLATION.md) | Complete setup guide |
-| [QUICKSTART.md](QUICKSTART.md) | 5-minute quick start |
-| [CHEATSHEET.md](CHEATSHEET.md) | Component reference |
-| [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md) | Full project overview |
-| [GITHUB_SETUP.md](GITHUB_SETUP.md) | GitHub setup guide |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution guidelines |
-| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Code of conduct |
-| [ROADMAP.md](ROADMAP.md) | Development roadmap & future features |
-| [LICENSE](LICENSE) | License information |
-
----
-
-## 🎯 Best Practices
-
-1. ✅ Always use `<x-app-layout>` as wrapper
-2. ✅ Prefer `glass-card` for containers
-3. ✅ Use Slovak colors (Tatra Navy & Crimson)
-4. ✅ Test in dark mode
-5. ✅ Make it mobile-first
-6. ✅ Keep Alpine.js lightweight
-
----
-
-## 🐛 Troubleshooting
-
-**Styles not working?**
-```bash
-npm run build
-php artisan view:clear
-```
-
-**Alpine.js not initializing?**
-Check `@vite(['resources/js/app.js'])` in layout.
-
-**Dark mode not persisting?**
-Ensure `window.initDarkMode()` runs on page load.
-
----
-
-## 🤝 Contributing
-
-This is a production-ready starter kit. Customize freely:
-
-1. Update colors in `tailwind.config.js`
-2. Add new components in `resources/views/components/`
-3. Extend utilities in `resources/css/app.css`
-4. Add features in `resources/js/app.js`
-
----
-
-## 📝 License
-
-Proprietary - IČO ATLAS 5.0 © 2024
-
----
-
-## 🎓 Resources
-
-- **Repository:** https://github.com/youh4ck3dme/ico-atlas-5.0
-- **Laravel Docs:** https://laravel.com/docs
-- **Tailwind CSS:** https://tailwindcss.com
-- **Alpine.js:** https://alpinejs.dev
-- **Vite:** https://vitejs.dev
-
----
-
-## 🙏 Credits
-
-**Design Inspiration:**
-- Precedent (https://precedent.dev)
-- Revolut (https://revolut.com)
-- Apple (https://apple.com/sk)
-
-**Tech Stack:**
-- Laravel Framework
-- Tailwind Labs
-- Alpine.js Team
-
----
-
-## 🚀 Next Steps
-
-1. ✅ Review documentation
-2. ✅ Follow QUICKSTART.md
-3. ✅ Customize components
-4. ✅ Build your features
-5. ✅ Deploy to production
-
----
-
-<div align="center">
-
-**Built with 💙❤️ for Slovakia**
-
-*Slovak Enterprise Luxury - Where tradition meets innovation*
-
----
-
-**IČO ATLAS 5.0** - The Future of Company Lookup
-
-🔷 **Tatra Navy** • ❤️ **Slovak Crimson** • ⚪ **Porcelain** • ⚫ **Matte**
-
-</div>

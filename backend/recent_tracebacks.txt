@@ -1,0 +1,1411 @@
+﻿
+> 2026-01-01 19:14:30,944 - iluminati - ER
+ROR - Error occurred: {'error_type': 'Modu
+leNotFoundError', 'error_message': "No mod
+ule named 'jinja2'", 'traceback': 'Traceba
+ck (most recent call last):\n  File "C:\\U
+sers\\engli\\Desktop\\v4\\v4\\backend\\ven
+v\\Lib\\site-packages\\starlette\\middlewa
+re\\errors.py", line 164, in __call__\n   
+ await self.app(scope, receive, _send)\n  
+File "C:\\Users\\engli\\Desktop\\v4\\v4\\b
+ackend\\venv\\Lib\\site-packages\\starlett
+e\\middleware\\cors.py", line 85, in __cal
+l__\n    await self.app(scope, receive, se
+nd)\n  File "C:\\Users\\engli\\Desktop\\v4
+\\v4\\backend\\venv\\Lib\\site-packages\\s
+tarlette\\middleware\\base.py", line 191, 
+in __call__\n    with recv_stream, send_st
+ream, collapse_excgroups():\n             
+                      ~~~~~~~~~~~~~~~~~~^^
+\n  File "C:\\Program Files\\WindowsApps\\
+PythonSoftwareFoundation.Python.3.13_3.13.
+2544.0_x64__qbz5n2kfra8p0\\Lib\\contextlib
+.py", line 162, in __exit__\n    self.gen.
+throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_utils.py", line 85, in collapse_excgr
+oups\n    raise exc\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\venv\\Lib\\
+site-packages\\starlette\\middleware\\base
+.py", line 193, in __call__\n    response 
+= await self.dispatch_func(request, call_n
+ext)\n               ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\Users
+\\engli\\Desktop\\v4\\v4\\backend\\main.py
+", line 148, in add_cors_headers\n    resp
+onse = await call_next(request)\n         
+      ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:
+\\Users\\engli\\Desktop\\v4\\v4\\backend\\
+venv\\Lib\\site-packages\\starlette\\middl
+eware\\base.py", line 168, in call_next\n 
+   raise app_exc from app_exc.__cause__ or
+ app_exc.__context__\n  File "C:\\Users\\e
+ngli\\Desktop\\v4\\v4\\backend\\venv\\Lib\
+\site-packages\\starlette\\middleware\\bas
+e.py", line 144, in coro\n    await self.a
+pp(scope, receive_or_disconnect, send_no_e
+rror)\n  File "C:\\Users\\engli\\Desktop\\
+v4\\v4\\backend\\venv\\Lib\\site-packages\
+\starlette\\middleware\\exceptions.py", li
+ne 63, in __call__\n    await wrap_app_han
+dling_exceptions(self.app, conn)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\middleware\\asyncexitstack.py",
+ line 18, in __call__\n    await self.app(
+scope, receive, send)\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\starlette\\routing.py", l
+ine 716, in __call__\n    await self.middl
+eware_stack(scope, receive, send)\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\venv\\Lib\\site-packages\\starlette\\ro
+uting.py", line 736, in app\n    await rou
+te.handle(scope, receive, send)\n  File "C
+:\\Users\\engli\\Desktop\\v4\\v4\\backend\
+\venv\\Lib\\site-packages\\starlette\\rout
+ing.py", line 290, in handle\n    await se
+lf.app(scope, receive, send)\n  File "C:\\
+Users\\engli\\Desktop\\v4\\v4\\backend\\ve
+nv\\Lib\\site-packages\\fastapi\\routing.p
+y", line 117, in app\n    await wrap_app_h
+andling_exceptions(app, request)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\routing.py", line 103, in app\n
+    response = await f(request)\n         
+      ^^^^^^^^^^^^^^^^\n  File "C:\\Users\
+\engli\\Desktop\\v4\\v4\\backend\\venv\\Li
+b\\site-packages\\fastapi\\routing.py", li
+ne 424, in app\n    raw_response = await r
+un_endpoint_function(\n                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 li
+nes>...\n    )\n    ^\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\fastapi\\routing.py", lin
+e 310, in run_endpoint_function\n    retur
+n await dependant.call(**values)\n        
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\main.py", line 2791, in enhanced_export
+\n    from services.pdf_export_service imp
+ort get_pdf_service\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\services\\p
+df_export_service.py", line 10, in <module
+>\n    from jinja2 import Template, Enviro
+nment, FileSystemLoader\nModuleNotFoundErr
+or: No module named \'jinja2\'\n', 'timest
+amp': '2026-01-01T19:14:30.943887', 'conte
+xt': {}, 'request': {'url': 'http://localh
+ost:8000/api/v2/export', 'method': 'POST',
+ 'client': '127.0.0.1', 'headers': {'host'
+: 'localhost:8000', 'user-agent': 'python-
+requests/2.32.5', 'accept-encoding': 'gzip
+, deflate', 'accept': '*/*', 'connection':
+ 'keep-alive', 'authorization': 'Bearer ey
+JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWI
+iOiJ0ZXN0X2F1dG9tYXRpb25AZXhhbXBsZS5jb20iL
+CJ0aWVyIjoiZnJlZSIsImV4cCI6MTc2OTg4MzI1OH0
+.GeRNm__cH5919m17ypUEMWuH0K_1QRlPwlbWYwAnP
+G8', 'content-length': '333', 'content-typ
+e': 'application/json'}}}
+> 2026-01-01 19:14:33,324 - iluminati - ER
+ROR - Error occurred: {'error_type': 'Modu
+leNotFoundError', 'error_message': "No mod
+ule named 'jinja2'", 'traceback': 'Traceba
+ck (most recent call last):\n  File "C:\\U
+sers\\engli\\Desktop\\v4\\v4\\backend\\ven
+v\\Lib\\site-packages\\starlette\\middlewa
+re\\errors.py", line 164, in __call__\n   
+ await self.app(scope, receive, _send)\n  
+File "C:\\Users\\engli\\Desktop\\v4\\v4\\b
+ackend\\venv\\Lib\\site-packages\\starlett
+e\\middleware\\cors.py", line 85, in __cal
+l__\n    await self.app(scope, receive, se
+nd)\n  File "C:\\Users\\engli\\Desktop\\v4
+\\v4\\backend\\venv\\Lib\\site-packages\\s
+tarlette\\middleware\\base.py", line 191, 
+in __call__\n    with recv_stream, send_st
+ream, collapse_excgroups():\n             
+                      ~~~~~~~~~~~~~~~~~~^^
+\n  File "C:\\Program Files\\WindowsApps\\
+PythonSoftwareFoundation.Python.3.13_3.13.
+2544.0_x64__qbz5n2kfra8p0\\Lib\\contextlib
+.py", line 162, in __exit__\n    self.gen.
+throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_utils.py", line 85, in collapse_excgr
+oups\n    raise exc\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\venv\\Lib\\
+site-packages\\starlette\\middleware\\base
+.py", line 193, in __call__\n    response 
+= await self.dispatch_func(request, call_n
+ext)\n               ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\Users
+\\engli\\Desktop\\v4\\v4\\backend\\main.py
+", line 148, in add_cors_headers\n    resp
+onse = await call_next(request)\n         
+      ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:
+\\Users\\engli\\Desktop\\v4\\v4\\backend\\
+venv\\Lib\\site-packages\\starlette\\middl
+eware\\base.py", line 168, in call_next\n 
+   raise app_exc from app_exc.__cause__ or
+ app_exc.__context__\n  File "C:\\Users\\e
+ngli\\Desktop\\v4\\v4\\backend\\venv\\Lib\
+\site-packages\\starlette\\middleware\\bas
+e.py", line 144, in coro\n    await self.a
+pp(scope, receive_or_disconnect, send_no_e
+rror)\n  File "C:\\Users\\engli\\Desktop\\
+v4\\v4\\backend\\venv\\Lib\\site-packages\
+\starlette\\middleware\\exceptions.py", li
+ne 63, in __call__\n    await wrap_app_han
+dling_exceptions(self.app, conn)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\middleware\\asyncexitstack.py",
+ line 18, in __call__\n    await self.app(
+scope, receive, send)\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\starlette\\routing.py", l
+ine 716, in __call__\n    await self.middl
+eware_stack(scope, receive, send)\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\venv\\Lib\\site-packages\\starlette\\ro
+uting.py", line 736, in app\n    await rou
+te.handle(scope, receive, send)\n  File "C
+:\\Users\\engli\\Desktop\\v4\\v4\\backend\
+\venv\\Lib\\site-packages\\starlette\\rout
+ing.py", line 290, in handle\n    await se
+lf.app(scope, receive, send)\n  File "C:\\
+Users\\engli\\Desktop\\v4\\v4\\backend\\ve
+nv\\Lib\\site-packages\\fastapi\\routing.p
+y", line 117, in app\n    await wrap_app_h
+andling_exceptions(app, request)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\routing.py", line 103, in app\n
+    response = await f(request)\n         
+      ^^^^^^^^^^^^^^^^\n  File "C:\\Users\
+\engli\\Desktop\\v4\\v4\\backend\\venv\\Li
+b\\site-packages\\fastapi\\routing.py", li
+ne 424, in app\n    raw_response = await r
+un_endpoint_function(\n                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 li
+nes>...\n    )\n    ^\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\fastapi\\routing.py", lin
+e 310, in run_endpoint_function\n    retur
+n await dependant.call(**values)\n        
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\main.py", line 2791, in enhanced_export
+\n    from services.pdf_export_service imp
+ort get_pdf_service\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\services\\p
+df_export_service.py", line 10, in <module
+>\n    from jinja2 import Template, Enviro
+nment, FileSystemLoader\nModuleNotFoundErr
+or: No module named \'jinja2\'\n', 'timest
+amp': '2026-01-01T19:14:33.324359', 'conte
+xt': {}, 'request': {'url': 'http://localh
+ost:8000/api/v2/export', 'method': 'POST',
+ 'client': '127.0.0.1', 'headers': {'host'
+: 'localhost:8000', 'user-agent': 'python-
+requests/2.32.5', 'accept-encoding': 'gzip
+, deflate', 'accept': '*/*', 'connection':
+ 'keep-alive', 'authorization': 'Bearer ey
+JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWI
+iOiJ0ZXN0X2F1dG9tYXRpb25AZXhhbXBsZS5jb20iL
+CJ0aWVyIjoiZnJlZSIsImV4cCI6MTc2OTg4MzI1OH0
+.GeRNm__cH5919m17ypUEMWuH0K_1QRlPwlbWYwAnP
+G8', 'content-length': '325', 'content-typ
+e': 'application/json'}}}
+  2026-01-01 19:14:41,612 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'35855304' in countries: ['SK']
+  2026-01-01 19:14:45,709 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'35906215' in countries: ['SK']
+  2026-01-01 19:14:49,822 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'45406215' in countries: ['SK']
+  2026-01-01 19:14:53,927 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'27074358' in countries: ['CZ']
+  2026-01-01 19:15:02,082 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'54684994' in countries: ['SK']
+  2026-01-01 19:15:07,268 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'Agrofert' in countries: ['SK', 'CZ']
+  2026-01-01 19:15:07,282 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'54684994' in countries: ['SK', 'CZ', 'PL'
+, 'HU']
+> 2026-01-01 19:15:15,423 - iluminati - ER
+ROR - Error occurred: {'error_type': 'Modu
+leNotFoundError', 'error_message': "No mod
+ule named 'jinja2'", 'traceback': 'Traceba
+ck (most recent call last):\n  File "C:\\U
+sers\\engli\\Desktop\\v4\\v4\\backend\\ven
+v\\Lib\\site-packages\\starlette\\middlewa
+re\\errors.py", line 164, in __call__\n   
+ await self.app(scope, receive, _send)\n  
+File "C:\\Users\\engli\\Desktop\\v4\\v4\\b
+ackend\\venv\\Lib\\site-packages\\starlett
+e\\middleware\\cors.py", line 85, in __cal
+l__\n    await self.app(scope, receive, se
+nd)\n  File "C:\\Users\\engli\\Desktop\\v4
+\\v4\\backend\\venv\\Lib\\site-packages\\s
+tarlette\\middleware\\base.py", line 191, 
+in __call__\n    with recv_stream, send_st
+ream, collapse_excgroups():\n             
+                      ~~~~~~~~~~~~~~~~~~^^
+\n  File "C:\\Program Files\\WindowsApps\\
+PythonSoftwareFoundation.Python.3.13_3.13.
+2544.0_x64__qbz5n2kfra8p0\\Lib\\contextlib
+.py", line 162, in __exit__\n    self.gen.
+throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_utils.py", line 85, in collapse_excgr
+oups\n    raise exc\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\venv\\Lib\\
+site-packages\\starlette\\middleware\\base
+.py", line 193, in __call__\n    response 
+= await self.dispatch_func(request, call_n
+ext)\n               ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\Users
+\\engli\\Desktop\\v4\\v4\\backend\\main.py
+", line 148, in add_cors_headers\n    resp
+onse = await call_next(request)\n         
+      ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:
+\\Users\\engli\\Desktop\\v4\\v4\\backend\\
+venv\\Lib\\site-packages\\starlette\\middl
+eware\\base.py", line 168, in call_next\n 
+   raise app_exc from app_exc.__cause__ or
+ app_exc.__context__\n  File "C:\\Users\\e
+ngli\\Desktop\\v4\\v4\\backend\\venv\\Lib\
+\site-packages\\starlette\\middleware\\bas
+e.py", line 144, in coro\n    await self.a
+pp(scope, receive_or_disconnect, send_no_e
+rror)\n  File "C:\\Users\\engli\\Desktop\\
+v4\\v4\\backend\\venv\\Lib\\site-packages\
+\starlette\\middleware\\exceptions.py", li
+ne 63, in __call__\n    await wrap_app_han
+dling_exceptions(self.app, conn)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\middleware\\asyncexitstack.py",
+ line 18, in __call__\n    await self.app(
+scope, receive, send)\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\starlette\\routing.py", l
+ine 716, in __call__\n    await self.middl
+eware_stack(scope, receive, send)\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\venv\\Lib\\site-packages\\starlette\\ro
+uting.py", line 736, in app\n    await rou
+te.handle(scope, receive, send)\n  File "C
+:\\Users\\engli\\Desktop\\v4\\v4\\backend\
+\venv\\Lib\\site-packages\\starlette\\rout
+ing.py", line 290, in handle\n    await se
+lf.app(scope, receive, send)\n  File "C:\\
+Users\\engli\\Desktop\\v4\\v4\\backend\\ve
+nv\\Lib\\site-packages\\fastapi\\routing.p
+y", line 117, in app\n    await wrap_app_h
+andling_exceptions(app, request)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\routing.py", line 103, in app\n
+    response = await f(request)\n         
+      ^^^^^^^^^^^^^^^^\n  File "C:\\Users\
+\engli\\Desktop\\v4\\v4\\backend\\venv\\Li
+b\\site-packages\\fastapi\\routing.py", li
+ne 424, in app\n    raw_response = await r
+un_endpoint_function(\n                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 li
+nes>...\n    )\n    ^\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\fastapi\\routing.py", lin
+e 310, in run_endpoint_function\n    retur
+n await dependant.call(**values)\n        
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\main.py", line 2791, in enhanced_export
+\n    from services.pdf_export_service imp
+ort get_pdf_service\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\services\\p
+df_export_service.py", line 10, in <module
+>\n    from jinja2 import Template, Enviro
+nment, FileSystemLoader\nModuleNotFoundErr
+or: No module named \'jinja2\'\n', 'timest
+amp': '2026-01-01T19:15:15.422797', 'conte
+xt': {}, 'request': {'url': 'http://localh
+ost:8000/api/v2/export', 'method': 'POST',
+ 'client': '127.0.0.1', 'headers': {'host'
+: 'localhost:8000', 'user-agent': 'python-
+requests/2.32.5', 'accept-encoding': 'gzip
+, deflate', 'accept': '*/*', 'connection':
+ 'keep-alive', 'authorization': 'Bearer ey
+JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWI
+iOiJ0ZXN0X2F1dG9tYXRpb25AZXhhbXBsZS5jb20iL
+CJ0aWVyIjoiZnJlZSIsImV4cCI6MTc2OTg4MzI5OH0
+.F6Ka1Jrmgfm94ng371mLkZGtm7fKkhnzgUyq-V4Dw
+8M', 'content-length': '333', 'content-typ
+e': 'application/json'}}}
+  2026-01-01 19:15:15,751 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'54684994' in countries: ['SK']
+  2026-01-01 19:15:15,811 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'54684994' in countries: ['SK', 'CZ', 'PL'
+, 'HU']
+> 2026-01-01 19:15:17,710 - iluminati - ER
+ROR - Error occurred: {'error_type': 'Modu
+leNotFoundError', 'error_message': "No mod
+ule named 'jinja2'", 'traceback': 'Traceba
+ck (most recent call last):\n  File "C:\\U
+sers\\engli\\Desktop\\v4\\v4\\backend\\ven
+v\\Lib\\site-packages\\starlette\\middlewa
+re\\errors.py", line 164, in __call__\n   
+ await self.app(scope, receive, _send)\n  
+File "C:\\Users\\engli\\Desktop\\v4\\v4\\b
+ackend\\venv\\Lib\\site-packages\\starlett
+e\\middleware\\cors.py", line 85, in __cal
+l__\n    await self.app(scope, receive, se
+nd)\n  File "C:\\Users\\engli\\Desktop\\v4
+\\v4\\backend\\venv\\Lib\\site-packages\\s
+tarlette\\middleware\\base.py", line 191, 
+in __call__\n    with recv_stream, send_st
+ream, collapse_excgroups():\n             
+                      ~~~~~~~~~~~~~~~~~~^^
+\n  File "C:\\Program Files\\WindowsApps\\
+PythonSoftwareFoundation.Python.3.13_3.13.
+2544.0_x64__qbz5n2kfra8p0\\Lib\\contextlib
+.py", line 162, in __exit__\n    self.gen.
+throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_utils.py", line 85, in collapse_excgr
+oups\n    raise exc\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\venv\\Lib\\
+site-packages\\starlette\\middleware\\base
+.py", line 193, in __call__\n    response 
+= await self.dispatch_func(request, call_n
+ext)\n               ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\Users
+\\engli\\Desktop\\v4\\v4\\backend\\main.py
+", line 148, in add_cors_headers\n    resp
+onse = await call_next(request)\n         
+      ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:
+\\Users\\engli\\Desktop\\v4\\v4\\backend\\
+venv\\Lib\\site-packages\\starlette\\middl
+eware\\base.py", line 168, in call_next\n 
+   raise app_exc from app_exc.__cause__ or
+ app_exc.__context__\n  File "C:\\Users\\e
+ngli\\Desktop\\v4\\v4\\backend\\venv\\Lib\
+\site-packages\\starlette\\middleware\\bas
+e.py", line 144, in coro\n    await self.a
+pp(scope, receive_or_disconnect, send_no_e
+rror)\n  File "C:\\Users\\engli\\Desktop\\
+v4\\v4\\backend\\venv\\Lib\\site-packages\
+\starlette\\middleware\\exceptions.py", li
+ne 63, in __call__\n    await wrap_app_han
+dling_exceptions(self.app, conn)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\middleware\\asyncexitstack.py",
+ line 18, in __call__\n    await self.app(
+scope, receive, send)\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\starlette\\routing.py", l
+ine 716, in __call__\n    await self.middl
+eware_stack(scope, receive, send)\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\venv\\Lib\\site-packages\\starlette\\ro
+uting.py", line 736, in app\n    await rou
+te.handle(scope, receive, send)\n  File "C
+:\\Users\\engli\\Desktop\\v4\\v4\\backend\
+\venv\\Lib\\site-packages\\starlette\\rout
+ing.py", line 290, in handle\n    await se
+lf.app(scope, receive, send)\n  File "C:\\
+Users\\engli\\Desktop\\v4\\v4\\backend\\ve
+nv\\Lib\\site-packages\\fastapi\\routing.p
+y", line 117, in app\n    await wrap_app_h
+andling_exceptions(app, request)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\routing.py", line 103, in app\n
+    response = await f(request)\n         
+      ^^^^^^^^^^^^^^^^\n  File "C:\\Users\
+\engli\\Desktop\\v4\\v4\\backend\\venv\\Li
+b\\site-packages\\fastapi\\routing.py", li
+ne 424, in app\n    raw_response = await r
+un_endpoint_function(\n                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 li
+nes>...\n    )\n    ^\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\fastapi\\routing.py", lin
+e 310, in run_endpoint_function\n    retur
+n await dependant.call(**values)\n        
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\main.py", line 2791, in enhanced_export
+\n    from services.pdf_export_service imp
+ort get_pdf_service\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\services\\p
+df_export_service.py", line 10, in <module
+>\n    from jinja2 import Template, Enviro
+nment, FileSystemLoader\nModuleNotFoundErr
+or: No module named \'jinja2\'\n', 'timest
+amp': '2026-01-01T19:15:17.709862', 'conte
+xt': {}, 'request': {'url': 'http://localh
+ost:8000/api/v2/export', 'method': 'POST',
+ 'client': '127.0.0.1', 'headers': {'host'
+: 'localhost:8000', 'user-agent': 'python-
+requests/2.32.5', 'accept-encoding': 'gzip
+, deflate', 'accept': '*/*', 'connection':
+ 'keep-alive', 'authorization': 'Bearer ey
+JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWI
+iOiJ0ZXN0X2F1dG9tYXRpb25AZXhhbXBsZS5jb20iL
+CJ0aWVyIjoiZnJlZSIsImV4cCI6MTc2OTg4MzI5OH0
+.F6Ka1Jrmgfm94ng371mLkZGtm7fKkhnzgUyq-V4Dw
+8M', 'content-length': '325', 'content-typ
+e': 'application/json'}}}
+  2026-01-01 19:15:26,729 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'35855304' in countries: ['SK']
+  2026-01-01 19:15:34,109 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'35906215' in countries: ['SK']
+  2026-01-01 19:15:41,816 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'45406215' in countries: ['SK']
+  2026-01-01 19:15:45,087 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'52374220' in countries: ['SK']
+  2026-01-01 19:15:50,032 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'27074358' in countries: ['CZ']
+  2026-01-01 19:15:50,046 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'52 374 220' in countries: ['SK', 'CZ', 'P
+L', 'HU']
+  2026-01-01 19:16:08,959 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'52374220' in countries: ['SK']
+  2026-01-01 19:16:08,990 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'52 374 220' in countries: ['SK', 'CZ', 'P
+L', 'HU']
+  2026-01-01 19:16:24,203 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'52374220' in countries: ['SK']
+  2026-01-01 19:16:24,264 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'52 374 220' in countries: ['SK', 'CZ', 'P
+L', 'HU']
+  2026-01-01 19:16:32,939 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'52374220' in countries: ['SK']
+  2026-01-01 19:16:32,986 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'52374220' in countries: ['SK', 'CZ', 'PL'
+, 'HU']
+  2026-01-01 19:16:45,787 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'52374220' in countries: ['SK']
+  2026-01-01 19:16:45,875 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'52374220' in countries: ['SK', 'CZ', 'PL'
+, 'HU']
+  2026-01-01 19:18:25,277 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'35855304' in countries: ['SK']
+  2026-01-01 19:18:29,425 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'35906215' in countries: ['SK']
+  2026-01-01 19:18:33,547 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'45406215' in countries: ['SK']
+  2026-01-01 19:18:37,689 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'27074358' in countries: ['CZ']
+  2026-01-01 19:29:32,470 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'Agrofert' in countries: ['SK', 'CZ']
+> 2026-01-01 19:29:38,801 - iluminati - ER
+ROR - Error occurred: {'error_type': 'Modu
+leNotFoundError', 'error_message': "No mod
+ule named 'jinja2'", 'traceback': 'Traceba
+ck (most recent call last):\n  File "C:\\U
+sers\\engli\\Desktop\\v4\\v4\\backend\\ven
+v\\Lib\\site-packages\\starlette\\middlewa
+re\\errors.py", line 164, in __call__\n   
+ await self.app(scope, receive, _send)\n  
+File "C:\\Users\\engli\\Desktop\\v4\\v4\\b
+ackend\\venv\\Lib\\site-packages\\starlett
+e\\middleware\\cors.py", line 85, in __cal
+l__\n    await self.app(scope, receive, se
+nd)\n  File "C:\\Users\\engli\\Desktop\\v4
+\\v4\\backend\\venv\\Lib\\site-packages\\s
+tarlette\\middleware\\base.py", line 191, 
+in __call__\n    with recv_stream, send_st
+ream, collapse_excgroups():\n             
+                      ~~~~~~~~~~~~~~~~~~^^
+\n  File "C:\\Program Files\\WindowsApps\\
+PythonSoftwareFoundation.Python.3.13_3.13.
+2544.0_x64__qbz5n2kfra8p0\\Lib\\contextlib
+.py", line 162, in __exit__\n    self.gen.
+throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_utils.py", line 85, in collapse_excgr
+oups\n    raise exc\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\venv\\Lib\\
+site-packages\\starlette\\middleware\\base
+.py", line 193, in __call__\n    response 
+= await self.dispatch_func(request, call_n
+ext)\n               ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\Users
+\\engli\\Desktop\\v4\\v4\\backend\\main.py
+", line 148, in add_cors_headers\n    resp
+onse = await call_next(request)\n         
+      ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:
+\\Users\\engli\\Desktop\\v4\\v4\\backend\\
+venv\\Lib\\site-packages\\starlette\\middl
+eware\\base.py", line 168, in call_next\n 
+   raise app_exc from app_exc.__cause__ or
+ app_exc.__context__\n  File "C:\\Users\\e
+ngli\\Desktop\\v4\\v4\\backend\\venv\\Lib\
+\site-packages\\starlette\\middleware\\bas
+e.py", line 144, in coro\n    await self.a
+pp(scope, receive_or_disconnect, send_no_e
+rror)\n  File "C:\\Users\\engli\\Desktop\\
+v4\\v4\\backend\\venv\\Lib\\site-packages\
+\starlette\\middleware\\exceptions.py", li
+ne 63, in __call__\n    await wrap_app_han
+dling_exceptions(self.app, conn)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\middleware\\asyncexitstack.py",
+ line 18, in __call__\n    await self.app(
+scope, receive, send)\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\starlette\\routing.py", l
+ine 716, in __call__\n    await self.middl
+eware_stack(scope, receive, send)\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\venv\\Lib\\site-packages\\starlette\\ro
+uting.py", line 736, in app\n    await rou
+te.handle(scope, receive, send)\n  File "C
+:\\Users\\engli\\Desktop\\v4\\v4\\backend\
+\venv\\Lib\\site-packages\\starlette\\rout
+ing.py", line 290, in handle\n    await se
+lf.app(scope, receive, send)\n  File "C:\\
+Users\\engli\\Desktop\\v4\\v4\\backend\\ve
+nv\\Lib\\site-packages\\fastapi\\routing.p
+y", line 117, in app\n    await wrap_app_h
+andling_exceptions(app, request)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\routing.py", line 103, in app\n
+    response = await f(request)\n         
+      ^^^^^^^^^^^^^^^^\n  File "C:\\Users\
+\engli\\Desktop\\v4\\v4\\backend\\venv\\Li
+b\\site-packages\\fastapi\\routing.py", li
+ne 424, in app\n    raw_response = await r
+un_endpoint_function(\n                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 li
+nes>...\n    )\n    ^\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\fastapi\\routing.py", lin
+e 310, in run_endpoint_function\n    retur
+n await dependant.call(**values)\n        
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\main.py", line 2791, in enhanced_export
+\n    from services.pdf_export_service imp
+ort get_pdf_service\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\services\\p
+df_export_service.py", line 10, in <module
+>\n    from jinja2 import Template, Enviro
+nment, FileSystemLoader\nModuleNotFoundErr
+or: No module named \'jinja2\'\n', 'timest
+amp': '2026-01-01T19:29:38.800723', 'conte
+xt': {}, 'request': {'url': 'http://localh
+ost:8000/api/v2/export', 'method': 'POST',
+ 'client': '127.0.0.1', 'headers': {'host'
+: 'localhost:8000', 'user-agent': 'python-
+requests/2.32.5', 'accept-encoding': 'gzip
+, deflate', 'accept': '*/*', 'connection':
+ 'keep-alive', 'authorization': 'Bearer ey
+JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWI
+iOiJ0ZXN0X2F1dG9tYXRpb25AZXhhbXBsZS5jb20iL
+CJ0aWVyIjoiZnJlZSIsImV4cCI6MTc2OTg4NDE2OH0
+.6161KNH0YDqOR30ytpvyoamcPDWtrcokyQW1j1Vqq
+fU', 'content-length': '333', 'content-typ
+e': 'application/json'}}}
+> 2026-01-01 19:29:41,210 - iluminati - ER
+ROR - Error occurred: {'error_type': 'Modu
+leNotFoundError', 'error_message': "No mod
+ule named 'jinja2'", 'traceback': 'Traceba
+ck (most recent call last):\n  File "C:\\U
+sers\\engli\\Desktop\\v4\\v4\\backend\\ven
+v\\Lib\\site-packages\\starlette\\middlewa
+re\\errors.py", line 164, in __call__\n   
+ await self.app(scope, receive, _send)\n  
+File "C:\\Users\\engli\\Desktop\\v4\\v4\\b
+ackend\\venv\\Lib\\site-packages\\starlett
+e\\middleware\\cors.py", line 85, in __cal
+l__\n    await self.app(scope, receive, se
+nd)\n  File "C:\\Users\\engli\\Desktop\\v4
+\\v4\\backend\\venv\\Lib\\site-packages\\s
+tarlette\\middleware\\base.py", line 191, 
+in __call__\n    with recv_stream, send_st
+ream, collapse_excgroups():\n             
+                      ~~~~~~~~~~~~~~~~~~^^
+\n  File "C:\\Program Files\\WindowsApps\\
+PythonSoftwareFoundation.Python.3.13_3.13.
+2544.0_x64__qbz5n2kfra8p0\\Lib\\contextlib
+.py", line 162, in __exit__\n    self.gen.
+throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_utils.py", line 85, in collapse_excgr
+oups\n    raise exc\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\venv\\Lib\\
+site-packages\\starlette\\middleware\\base
+.py", line 193, in __call__\n    response 
+= await self.dispatch_func(request, call_n
+ext)\n               ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\Users
+\\engli\\Desktop\\v4\\v4\\backend\\main.py
+", line 148, in add_cors_headers\n    resp
+onse = await call_next(request)\n         
+      ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:
+\\Users\\engli\\Desktop\\v4\\v4\\backend\\
+venv\\Lib\\site-packages\\starlette\\middl
+eware\\base.py", line 168, in call_next\n 
+   raise app_exc from app_exc.__cause__ or
+ app_exc.__context__\n  File "C:\\Users\\e
+ngli\\Desktop\\v4\\v4\\backend\\venv\\Lib\
+\site-packages\\starlette\\middleware\\bas
+e.py", line 144, in coro\n    await self.a
+pp(scope, receive_or_disconnect, send_no_e
+rror)\n  File "C:\\Users\\engli\\Desktop\\
+v4\\v4\\backend\\venv\\Lib\\site-packages\
+\starlette\\middleware\\exceptions.py", li
+ne 63, in __call__\n    await wrap_app_han
+dling_exceptions(self.app, conn)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\middleware\\asyncexitstack.py",
+ line 18, in __call__\n    await self.app(
+scope, receive, send)\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\starlette\\routing.py", l
+ine 716, in __call__\n    await self.middl
+eware_stack(scope, receive, send)\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\venv\\Lib\\site-packages\\starlette\\ro
+uting.py", line 736, in app\n    await rou
+te.handle(scope, receive, send)\n  File "C
+:\\Users\\engli\\Desktop\\v4\\v4\\backend\
+\venv\\Lib\\site-packages\\starlette\\rout
+ing.py", line 290, in handle\n    await se
+lf.app(scope, receive, send)\n  File "C:\\
+Users\\engli\\Desktop\\v4\\v4\\backend\\ve
+nv\\Lib\\site-packages\\fastapi\\routing.p
+y", line 117, in app\n    await wrap_app_h
+andling_exceptions(app, request)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\routing.py", line 103, in app\n
+    response = await f(request)\n         
+      ^^^^^^^^^^^^^^^^\n  File "C:\\Users\
+\engli\\Desktop\\v4\\v4\\backend\\venv\\Li
+b\\site-packages\\fastapi\\routing.py", li
+ne 424, in app\n    raw_response = await r
+un_endpoint_function(\n                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 li
+nes>...\n    )\n    ^\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\fastapi\\routing.py", lin
+e 310, in run_endpoint_function\n    retur
+n await dependant.call(**values)\n        
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\main.py", line 2791, in enhanced_export
+\n    from services.pdf_export_service imp
+ort get_pdf_service\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\services\\p
+df_export_service.py", line 10, in <module
+>\n    from jinja2 import Template, Enviro
+nment, FileSystemLoader\nModuleNotFoundErr
+or: No module named \'jinja2\'\n', 'timest
+amp': '2026-01-01T19:29:41.210041', 'conte
+xt': {}, 'request': {'url': 'http://localh
+ost:8000/api/v2/export', 'method': 'POST',
+ 'client': '127.0.0.1', 'headers': {'host'
+: 'localhost:8000', 'user-agent': 'python-
+requests/2.32.5', 'accept-encoding': 'gzip
+, deflate', 'accept': '*/*', 'connection':
+ 'keep-alive', 'authorization': 'Bearer ey
+JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWI
+iOiJ0ZXN0X2F1dG9tYXRpb25AZXhhbXBsZS5jb20iL
+CJ0aWVyIjoiZnJlZSIsImV4cCI6MTc2OTg4NDE2OH0
+.6161KNH0YDqOR30ytpvyoamcPDWtrcokyQW1j1Vqq
+fU', 'content-length': '325', 'content-typ
+e': 'application/json'}}}
+  2026-01-01 19:29:54,520 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'35855304' in countries: ['SK']
+  2026-01-01 19:29:58,652 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'35906215' in countries: ['SK']
+  2026-01-01 19:30:02,783 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'45406215' in countries: ['SK']
+  2026-01-01 19:30:06,906 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'27074358' in countries: ['CZ']
+  2026-01-01 19:32:28,950 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'Agrofert' in countries: ['SK', 'CZ']
+> 2026-01-01 19:32:35,221 - iluminati - ER
+ROR - Error occurred: {'error_type': 'Modu
+leNotFoundError', 'error_message': "No mod
+ule named 'jinja2'", 'traceback': 'Traceba
+ck (most recent call last):\n  File "C:\\U
+sers\\engli\\Desktop\\v4\\v4\\backend\\ven
+v\\Lib\\site-packages\\starlette\\middlewa
+re\\errors.py", line 164, in __call__\n   
+ await self.app(scope, receive, _send)\n  
+File "C:\\Users\\engli\\Desktop\\v4\\v4\\b
+ackend\\venv\\Lib\\site-packages\\starlett
+e\\middleware\\cors.py", line 85, in __cal
+l__\n    await self.app(scope, receive, se
+nd)\n  File "C:\\Users\\engli\\Desktop\\v4
+\\v4\\backend\\venv\\Lib\\site-packages\\s
+tarlette\\middleware\\base.py", line 191, 
+in __call__\n    with recv_stream, send_st
+ream, collapse_excgroups():\n             
+                      ~~~~~~~~~~~~~~~~~~^^
+\n  File "C:\\Program Files\\WindowsApps\\
+PythonSoftwareFoundation.Python.3.13_3.13.
+2544.0_x64__qbz5n2kfra8p0\\Lib\\contextlib
+.py", line 162, in __exit__\n    self.gen.
+throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_utils.py", line 85, in collapse_excgr
+oups\n    raise exc\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\venv\\Lib\\
+site-packages\\starlette\\middleware\\base
+.py", line 193, in __call__\n    response 
+= await self.dispatch_func(request, call_n
+ext)\n               ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\Users
+\\engli\\Desktop\\v4\\v4\\backend\\main.py
+", line 148, in add_cors_headers\n    resp
+onse = await call_next(request)\n         
+      ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:
+\\Users\\engli\\Desktop\\v4\\v4\\backend\\
+venv\\Lib\\site-packages\\starlette\\middl
+eware\\base.py", line 168, in call_next\n 
+   raise app_exc from app_exc.__cause__ or
+ app_exc.__context__\n  File "C:\\Users\\e
+ngli\\Desktop\\v4\\v4\\backend\\venv\\Lib\
+\site-packages\\starlette\\middleware\\bas
+e.py", line 144, in coro\n    await self.a
+pp(scope, receive_or_disconnect, send_no_e
+rror)\n  File "C:\\Users\\engli\\Desktop\\
+v4\\v4\\backend\\venv\\Lib\\site-packages\
+\starlette\\middleware\\exceptions.py", li
+ne 63, in __call__\n    await wrap_app_han
+dling_exceptions(self.app, conn)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\middleware\\asyncexitstack.py",
+ line 18, in __call__\n    await self.app(
+scope, receive, send)\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\starlette\\routing.py", l
+ine 716, in __call__\n    await self.middl
+eware_stack(scope, receive, send)\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\venv\\Lib\\site-packages\\starlette\\ro
+uting.py", line 736, in app\n    await rou
+te.handle(scope, receive, send)\n  File "C
+:\\Users\\engli\\Desktop\\v4\\v4\\backend\
+\venv\\Lib\\site-packages\\starlette\\rout
+ing.py", line 290, in handle\n    await se
+lf.app(scope, receive, send)\n  File "C:\\
+Users\\engli\\Desktop\\v4\\v4\\backend\\ve
+nv\\Lib\\site-packages\\fastapi\\routing.p
+y", line 117, in app\n    await wrap_app_h
+andling_exceptions(app, request)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\routing.py", line 103, in app\n
+    response = await f(request)\n         
+      ^^^^^^^^^^^^^^^^\n  File "C:\\Users\
+\engli\\Desktop\\v4\\v4\\backend\\venv\\Li
+b\\site-packages\\fastapi\\routing.py", li
+ne 424, in app\n    raw_response = await r
+un_endpoint_function(\n                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 li
+nes>...\n    )\n    ^\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\fastapi\\routing.py", lin
+e 310, in run_endpoint_function\n    retur
+n await dependant.call(**values)\n        
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\main.py", line 2791, in enhanced_export
+\n    from services.pdf_export_service imp
+ort get_pdf_service\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\services\\p
+df_export_service.py", line 10, in <module
+>\n    from jinja2 import Template, Enviro
+nment, FileSystemLoader\nModuleNotFoundErr
+or: No module named \'jinja2\'\n', 'timest
+amp': '2026-01-01T19:32:35.221254', 'conte
+xt': {}, 'request': {'url': 'http://localh
+ost:8000/api/v2/export', 'method': 'POST',
+ 'client': '127.0.0.1', 'headers': {'host'
+: 'localhost:8000', 'user-agent': 'python-
+requests/2.32.5', 'accept-encoding': 'gzip
+, deflate', 'accept': '*/*', 'connection':
+ 'keep-alive', 'authorization': 'Bearer ey
+JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWI
+iOiJ0ZXN0X2F1dG9tYXRpb25AZXhhbXBsZS5jb20iL
+CJ0aWVyIjoiZnJlZSIsImV4cCI6MTc2OTg4NDM0NH0
+.eqUwT4W8XKIcmwxogEfc-boKQena-LR9npAFtUsIT
+hE', 'content-length': '333', 'content-typ
+e': 'application/json'}}}
+> 2026-01-01 19:32:37,596 - iluminati - ER
+ROR - Error occurred: {'error_type': 'Modu
+leNotFoundError', 'error_message': "No mod
+ule named 'jinja2'", 'traceback': 'Traceba
+ck (most recent call last):\n  File "C:\\U
+sers\\engli\\Desktop\\v4\\v4\\backend\\ven
+v\\Lib\\site-packages\\starlette\\middlewa
+re\\errors.py", line 164, in __call__\n   
+ await self.app(scope, receive, _send)\n  
+File "C:\\Users\\engli\\Desktop\\v4\\v4\\b
+ackend\\venv\\Lib\\site-packages\\starlett
+e\\middleware\\cors.py", line 85, in __cal
+l__\n    await self.app(scope, receive, se
+nd)\n  File "C:\\Users\\engli\\Desktop\\v4
+\\v4\\backend\\venv\\Lib\\site-packages\\s
+tarlette\\middleware\\base.py", line 191, 
+in __call__\n    with recv_stream, send_st
+ream, collapse_excgroups():\n             
+                      ~~~~~~~~~~~~~~~~~~^^
+\n  File "C:\\Program Files\\WindowsApps\\
+PythonSoftwareFoundation.Python.3.13_3.13.
+2544.0_x64__qbz5n2kfra8p0\\Lib\\contextlib
+.py", line 162, in __exit__\n    self.gen.
+throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_utils.py", line 85, in collapse_excgr
+oups\n    raise exc\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\venv\\Lib\\
+site-packages\\starlette\\middleware\\base
+.py", line 193, in __call__\n    response 
+= await self.dispatch_func(request, call_n
+ext)\n               ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\Users
+\\engli\\Desktop\\v4\\v4\\backend\\main.py
+", line 148, in add_cors_headers\n    resp
+onse = await call_next(request)\n         
+      ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:
+\\Users\\engli\\Desktop\\v4\\v4\\backend\\
+venv\\Lib\\site-packages\\starlette\\middl
+eware\\base.py", line 168, in call_next\n 
+   raise app_exc from app_exc.__cause__ or
+ app_exc.__context__\n  File "C:\\Users\\e
+ngli\\Desktop\\v4\\v4\\backend\\venv\\Lib\
+\site-packages\\starlette\\middleware\\bas
+e.py", line 144, in coro\n    await self.a
+pp(scope, receive_or_disconnect, send_no_e
+rror)\n  File "C:\\Users\\engli\\Desktop\\
+v4\\v4\\backend\\venv\\Lib\\site-packages\
+\starlette\\middleware\\exceptions.py", li
+ne 63, in __call__\n    await wrap_app_han
+dling_exceptions(self.app, conn)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\middleware\\asyncexitstack.py",
+ line 18, in __call__\n    await self.app(
+scope, receive, send)\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\starlette\\routing.py", l
+ine 716, in __call__\n    await self.middl
+eware_stack(scope, receive, send)\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\venv\\Lib\\site-packages\\starlette\\ro
+uting.py", line 736, in app\n    await rou
+te.handle(scope, receive, send)\n  File "C
+:\\Users\\engli\\Desktop\\v4\\v4\\backend\
+\venv\\Lib\\site-packages\\starlette\\rout
+ing.py", line 290, in handle\n    await se
+lf.app(scope, receive, send)\n  File "C:\\
+Users\\engli\\Desktop\\v4\\v4\\backend\\ve
+nv\\Lib\\site-packages\\fastapi\\routing.p
+y", line 117, in app\n    await wrap_app_h
+andling_exceptions(app, request)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\routing.py", line 103, in app\n
+    response = await f(request)\n         
+      ^^^^^^^^^^^^^^^^\n  File "C:\\Users\
+\engli\\Desktop\\v4\\v4\\backend\\venv\\Li
+b\\site-packages\\fastapi\\routing.py", li
+ne 424, in app\n    raw_response = await r
+un_endpoint_function(\n                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 li
+nes>...\n    )\n    ^\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\fastapi\\routing.py", lin
+e 310, in run_endpoint_function\n    retur
+n await dependant.call(**values)\n        
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\main.py", line 2791, in enhanced_export
+\n    from services.pdf_export_service imp
+ort get_pdf_service\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\services\\p
+df_export_service.py", line 10, in <module
+>\n    from jinja2 import Template, Enviro
+nment, FileSystemLoader\nModuleNotFoundErr
+or: No module named \'jinja2\'\n', 'timest
+amp': '2026-01-01T19:32:37.596170', 'conte
+xt': {}, 'request': {'url': 'http://localh
+ost:8000/api/v2/export', 'method': 'POST',
+ 'client': '127.0.0.1', 'headers': {'host'
+: 'localhost:8000', 'user-agent': 'python-
+requests/2.32.5', 'accept-encoding': 'gzip
+, deflate', 'accept': '*/*', 'connection':
+ 'keep-alive', 'authorization': 'Bearer ey
+JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWI
+iOiJ0ZXN0X2F1dG9tYXRpb25AZXhhbXBsZS5jb20iL
+CJ0aWVyIjoiZnJlZSIsImV4cCI6MTc2OTg4NDM0NH0
+.eqUwT4W8XKIcmwxogEfc-boKQena-LR9npAFtUsIT
+hE', 'content-length': '325', 'content-typ
+e': 'application/json'}}}
+  2026-01-01 19:32:48,181 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'35855304' in countries: ['SK']
+  2026-01-01 19:32:52,317 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'35906215' in countries: ['SK']
+  2026-01-01 19:32:56,441 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'45406215' in countries: ['SK']
+  2026-01-01 19:33:00,565 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'27074358' in countries: ['CZ']
+  2026-01-01 19:38:40,088 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'Agrofert' in countries: ['SK', 'CZ']
+> 2026-01-01 19:38:46,306 - iluminati - ER
+ROR - Error occurred: {'error_type': 'Modu
+leNotFoundError', 'error_message': "No mod
+ule named 'jinja2'", 'traceback': 'Traceba
+ck (most recent call last):\n  File "C:\\U
+sers\\engli\\Desktop\\v4\\v4\\backend\\ven
+v\\Lib\\site-packages\\starlette\\middlewa
+re\\errors.py", line 164, in __call__\n   
+ await self.app(scope, receive, _send)\n  
+File "C:\\Users\\engli\\Desktop\\v4\\v4\\b
+ackend\\venv\\Lib\\site-packages\\starlett
+e\\middleware\\cors.py", line 85, in __cal
+l__\n    await self.app(scope, receive, se
+nd)\n  File "C:\\Users\\engli\\Desktop\\v4
+\\v4\\backend\\venv\\Lib\\site-packages\\s
+tarlette\\middleware\\base.py", line 191, 
+in __call__\n    with recv_stream, send_st
+ream, collapse_excgroups():\n             
+                      ~~~~~~~~~~~~~~~~~~^^
+\n  File "C:\\Program Files\\WindowsApps\\
+PythonSoftwareFoundation.Python.3.13_3.13.
+2544.0_x64__qbz5n2kfra8p0\\Lib\\contextlib
+.py", line 162, in __exit__\n    self.gen.
+throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_utils.py", line 85, in collapse_excgr
+oups\n    raise exc\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\venv\\Lib\\
+site-packages\\starlette\\middleware\\base
+.py", line 193, in __call__\n    response 
+= await self.dispatch_func(request, call_n
+ext)\n               ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\Users
+\\engli\\Desktop\\v4\\v4\\backend\\main.py
+", line 148, in add_cors_headers\n    resp
+onse = await call_next(request)\n         
+      ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:
+\\Users\\engli\\Desktop\\v4\\v4\\backend\\
+venv\\Lib\\site-packages\\starlette\\middl
+eware\\base.py", line 168, in call_next\n 
+   raise app_exc from app_exc.__cause__ or
+ app_exc.__context__\n  File "C:\\Users\\e
+ngli\\Desktop\\v4\\v4\\backend\\venv\\Lib\
+\site-packages\\starlette\\middleware\\bas
+e.py", line 144, in coro\n    await self.a
+pp(scope, receive_or_disconnect, send_no_e
+rror)\n  File "C:\\Users\\engli\\Desktop\\
+v4\\v4\\backend\\venv\\Lib\\site-packages\
+\starlette\\middleware\\exceptions.py", li
+ne 63, in __call__\n    await wrap_app_han
+dling_exceptions(self.app, conn)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\middleware\\asyncexitstack.py",
+ line 18, in __call__\n    await self.app(
+scope, receive, send)\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\starlette\\routing.py", l
+ine 716, in __call__\n    await self.middl
+eware_stack(scope, receive, send)\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\venv\\Lib\\site-packages\\starlette\\ro
+uting.py", line 736, in app\n    await rou
+te.handle(scope, receive, send)\n  File "C
+:\\Users\\engli\\Desktop\\v4\\v4\\backend\
+\venv\\Lib\\site-packages\\starlette\\rout
+ing.py", line 290, in handle\n    await se
+lf.app(scope, receive, send)\n  File "C:\\
+Users\\engli\\Desktop\\v4\\v4\\backend\\ve
+nv\\Lib\\site-packages\\fastapi\\routing.p
+y", line 117, in app\n    await wrap_app_h
+andling_exceptions(app, request)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\routing.py", line 103, in app\n
+    response = await f(request)\n         
+      ^^^^^^^^^^^^^^^^\n  File "C:\\Users\
+\engli\\Desktop\\v4\\v4\\backend\\venv\\Li
+b\\site-packages\\fastapi\\routing.py", li
+ne 424, in app\n    raw_response = await r
+un_endpoint_function(\n                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 li
+nes>...\n    )\n    ^\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\fastapi\\routing.py", lin
+e 310, in run_endpoint_function\n    retur
+n await dependant.call(**values)\n        
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\main.py", line 2791, in enhanced_export
+\n    from services.pdf_export_service imp
+ort get_pdf_service\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\services\\p
+df_export_service.py", line 10, in <module
+>\n    from jinja2 import Template, Enviro
+nment, FileSystemLoader\nModuleNotFoundErr
+or: No module named \'jinja2\'\n', 'timest
+amp': '2026-01-01T19:38:46.306680', 'conte
+xt': {}, 'request': {'url': 'http://localh
+ost:8000/api/v2/export', 'method': 'POST',
+ 'client': '127.0.0.1', 'headers': {'host'
+: 'localhost:8000', 'user-agent': 'python-
+requests/2.32.5', 'accept-encoding': 'gzip
+, deflate', 'accept': '*/*', 'connection':
+ 'keep-alive', 'authorization': 'Bearer ey
+JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWI
+iOiJ0ZXN0X2F1dG9tYXRpb25AZXhhbXBsZS5jb20iL
+CJ0aWVyIjoiZnJlZSIsImV4cCI6MTc2OTg4NDcxNX0
+.YcuEgg8v7qQnMED5Z4AI0X3TieputhAU1m7DND5Wl
+Dg', 'content-length': '333', 'content-typ
+e': 'application/json'}}}
+> 2026-01-01 19:38:48,462 - iluminati - ER
+ROR - Error occurred: {'error_type': 'Modu
+leNotFoundError', 'error_message': "No mod
+ule named 'jinja2'", 'traceback': 'Traceba
+ck (most recent call last):\n  File "C:\\U
+sers\\engli\\Desktop\\v4\\v4\\backend\\ven
+v\\Lib\\site-packages\\starlette\\middlewa
+re\\errors.py", line 164, in __call__\n   
+ await self.app(scope, receive, _send)\n  
+File "C:\\Users\\engli\\Desktop\\v4\\v4\\b
+ackend\\venv\\Lib\\site-packages\\starlett
+e\\middleware\\cors.py", line 85, in __cal
+l__\n    await self.app(scope, receive, se
+nd)\n  File "C:\\Users\\engli\\Desktop\\v4
+\\v4\\backend\\venv\\Lib\\site-packages\\s
+tarlette\\middleware\\base.py", line 191, 
+in __call__\n    with recv_stream, send_st
+ream, collapse_excgroups():\n             
+                      ~~~~~~~~~~~~~~~~~~^^
+\n  File "C:\\Program Files\\WindowsApps\\
+PythonSoftwareFoundation.Python.3.13_3.13.
+2544.0_x64__qbz5n2kfra8p0\\Lib\\contextlib
+.py", line 162, in __exit__\n    self.gen.
+throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_utils.py", line 85, in collapse_excgr
+oups\n    raise exc\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\venv\\Lib\\
+site-packages\\starlette\\middleware\\base
+.py", line 193, in __call__\n    response 
+= await self.dispatch_func(request, call_n
+ext)\n               ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:\\Users
+\\engli\\Desktop\\v4\\v4\\backend\\main.py
+", line 148, in add_cors_headers\n    resp
+onse = await call_next(request)\n         
+      ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "C:
+\\Users\\engli\\Desktop\\v4\\v4\\backend\\
+venv\\Lib\\site-packages\\starlette\\middl
+eware\\base.py", line 168, in call_next\n 
+   raise app_exc from app_exc.__cause__ or
+ app_exc.__context__\n  File "C:\\Users\\e
+ngli\\Desktop\\v4\\v4\\backend\\venv\\Lib\
+\site-packages\\starlette\\middleware\\bas
+e.py", line 144, in coro\n    await self.a
+pp(scope, receive_or_disconnect, send_no_e
+rror)\n  File "C:\\Users\\engli\\Desktop\\
+v4\\v4\\backend\\venv\\Lib\\site-packages\
+\starlette\\middleware\\exceptions.py", li
+ne 63, in __call__\n    await wrap_app_han
+dling_exceptions(self.app, conn)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\middleware\\asyncexitstack.py",
+ line 18, in __call__\n    await self.app(
+scope, receive, send)\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\starlette\\routing.py", l
+ine 716, in __call__\n    await self.middl
+eware_stack(scope, receive, send)\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\venv\\Lib\\site-packages\\starlette\\ro
+uting.py", line 736, in app\n    await rou
+te.handle(scope, receive, send)\n  File "C
+:\\Users\\engli\\Desktop\\v4\\v4\\backend\
+\venv\\Lib\\site-packages\\starlette\\rout
+ing.py", line 290, in handle\n    await se
+lf.app(scope, receive, send)\n  File "C:\\
+Users\\engli\\Desktop\\v4\\v4\\backend\\ve
+nv\\Lib\\site-packages\\fastapi\\routing.p
+y", line 117, in app\n    await wrap_app_h
+andling_exceptions(app, request)(scope, re
+ceive, send)\n  File "C:\\Users\\engli\\De
+sktop\\v4\\v4\\backend\\venv\\Lib\\site-pa
+ckages\\starlette\\_exception_handler.py",
+ line 53, in wrapped_app\n    raise exc\n 
+ File "C:\\Users\\engli\\Desktop\\v4\\v4\\
+backend\\venv\\Lib\\site-packages\\starlet
+te\\_exception_handler.py", line 42, in wr
+apped_app\n    await app(scope, receive, s
+ender)\n  File "C:\\Users\\engli\\Desktop\
+\v4\\v4\\backend\\venv\\Lib\\site-packages
+\\fastapi\\routing.py", line 103, in app\n
+    response = await f(request)\n         
+      ^^^^^^^^^^^^^^^^\n  File "C:\\Users\
+\engli\\Desktop\\v4\\v4\\backend\\venv\\Li
+b\\site-packages\\fastapi\\routing.py", li
+ne 424, in app\n    raw_response = await r
+un_endpoint_function(\n                   
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 li
+nes>...\n    )\n    ^\n  File "C:\\Users\\
+engli\\Desktop\\v4\\v4\\backend\\venv\\Lib
+\\site-packages\\fastapi\\routing.py", lin
+e 310, in run_endpoint_function\n    retur
+n await dependant.call(**values)\n        
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File 
+"C:\\Users\\engli\\Desktop\\v4\\v4\\backen
+d\\main.py", line 2791, in enhanced_export
+\n    from services.pdf_export_service imp
+ort get_pdf_service\n  File "C:\\Users\\en
+gli\\Desktop\\v4\\v4\\backend\\services\\p
+df_export_service.py", line 10, in <module
+>\n    from jinja2 import Template, Enviro
+nment, FileSystemLoader\nModuleNotFoundErr
+or: No module named \'jinja2\'\n', 'timest
+amp': '2026-01-01T19:38:48.461859', 'conte
+xt': {}, 'request': {'url': 'http://localh
+ost:8000/api/v2/export', 'method': 'POST',
+ 'client': '127.0.0.1', 'headers': {'host'
+: 'localhost:8000', 'user-agent': 'python-
+requests/2.32.5', 'accept-encoding': 'gzip
+, deflate', 'accept': '*/*', 'connection':
+ 'keep-alive', 'authorization': 'Bearer ey
+JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWI
+iOiJ0ZXN0X2F1dG9tYXRpb25AZXhhbXBsZS5jb20iL
+CJ0aWVyIjoiZnJlZSIsImV4cCI6MTc2OTg4NDcxNX0
+.YcuEgg8v7qQnMED5Z4AI0X3TieputhAU1m7DND5Wl
+Dg', 'content-length': '325', 'content-typ
+e': 'application/json'}}}
+  2026-01-01 20:26:57,357 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'52374220' in countries: ['SK']
+  2026-01-01 20:26:57,401 - services.enhan
+ced_data_extractor - INFO - Searching for 
+'52374220' in countries: ['SK', 'CZ', 'PL'
+, 'HU']
+
+

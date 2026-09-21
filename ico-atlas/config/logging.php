@@ -127,6 +127,14 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+        'icoatlas' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/icoatlas.log'),
+            'level' => env('LOG_ICOATLAS_LEVEL', 'info'),
+            'days' => 14,
+            'replace_placeholders' => true,
+        ],
+
     ],
 
 ];

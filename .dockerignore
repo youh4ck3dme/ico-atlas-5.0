@@ -1,0 +1,40 @@
+# Backend
+backend/__pycache__
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/.Python
+backend/venv
+backend/.venv
+backend/env
+backend/.env
+backend/*.db
+backend/*.log
+
+# Frontend
+frontend/node_modules
+frontend/dist
+frontend/.vite
+frontend/.env
+frontend/.env.local
+frontend/.env.production
+frontend/*.log
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose*.yml
+Dockerfile*
+.dockerignore

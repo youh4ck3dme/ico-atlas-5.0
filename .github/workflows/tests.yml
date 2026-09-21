@@ -2,9 +2,9 @@ name: Tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
 
 jobs:
   test:
@@ -13,7 +13,7 @@ jobs:
       contents: read
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
@@ -21,22 +21,24 @@ jobs:
         php-version: '8.4'
         extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, dom, filter, gd, json, pdo
         coverage: none
-        
+
     - name: Install Composer dependencies
       working-directory: ./ico-atlas
       run: composer install --prefer-dist --no-progress --no-interaction
-      
+
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: '18'
-        
+        node-version: '22'
+
     - name: Install npm dependencies
+      working-directory: ./ico-atlas
       run: npm ci
-      
+
     - name: Build assets
+      working-directory: ./ico-atlas
       run: npm run build
-      
+
     - name: Prepare Laravel Application
       working-directory: ./ico-atlas
       run: |

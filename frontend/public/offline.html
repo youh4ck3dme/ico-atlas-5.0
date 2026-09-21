@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - ILUMINATI SYSTEM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0B4EA2 0%, #1a1a2e 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            background: #EE1C25;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        button:hover {
+            background: #c4161e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(238, 28, 37, 0.4);
+        }
+        
+        button.secondary {
+            background: transparent;
+            border: 2px solid #FFD700;
+            color: #FFD700;
+        }
+        
+        button.secondary:hover {
+            background: #FFD700;
+            color: #0B4EA2;
+        }
+        
+        .status {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .status.online {
+            background: rgba(0, 255, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">ILUMINATI SYSTEM</div>
+        <div class="icon">📡</div>
+        <h1>Ste offline</h1>
+        <p>
+            Vaše internetové pripojenie je momentálne nedostupné. 
+            Niektoré funkcie môžu byť obmedzené.
+        </p>
+        <div class="actions">
+            <button onclick="window.location.reload()">Obnoviť stránku</button>
+            <button class="secondary" onclick="window.location.href='/'">Späť na hlavnú</button>
+        </div>
+        <div class="status" id="status">
+            <div>Kontrolujem pripojenie...</div>
+        </div>
+    </div>
+    
+    <script>
+        // Check online status
+        function updateStatus() {
+            const statusEl = document.getElementById('status');
+            if (navigator.onLine) {
+                statusEl.innerHTML = '<div style="color: #4ade80;">✅ Pripojenie obnovené! Obnovte stránku.</div>';
+                statusEl.classList.add('online');
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 2000);
+            } else {
+                statusEl.innerHTML = '<div>❌ Stále offline</div>';
+                statusEl.classList.remove('online');
+            }
+        }
+        
+        // Listen for online/offline events
+        window.addEventListener('online', updateStatus);
+        window.addEventListener('offline', updateStatus);
+        
+        // Initial check
+        updateStatus();
+        
+        // Periodic check
+        setInterval(updateStatus, 5000);
+    </script>
+</body>
+</html>
+
