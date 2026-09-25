@@ -9,39 +9,44 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.4'
-        extensions: mbstring, xml, curl, sqlite, pdo_sqlite
+        extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, dom, filter, gd, json, pdo
         coverage: none
-    
-    - name: Copy .env
-      run: |
-        cd ico-atlas
-        cp .env.example .env || echo "APP_KEY=" > .env
-    
-    - name: Install Composer Dependencies
-      run: |
-        cd ico-atlas
-        composer install --prefer-dist --no-progress --no-interaction
-    
-    - name: Generate App Key
-      run: |
-        cd ico-atlas
-        php artisan key:generate
-    
-    - name: Install NPM Dependencies
-      run: |
-        cd ico-atlas
-        npm ci
-    
-    - name: Run Tests
-      run: |
-        cd ico-atlas
-        php artisan test
 
+    - name: Install Composer dependencies
+      working-directory: ./ico-atlas
+      run: composer install --prefer-dist --no-progress --no-interaction
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+
+    - name: Install npm dependencies
+      working-directory: ./ico-atlas
+      run: npm ci
+
+    - name: Build assets
+      working-directory: ./ico-atlas
+      run: npm run build
+
+    - name: Prepare Laravel Application
+      working-directory: ./ico-atlas
+      run: |
+        cp .env.example .env
+        touch database/database.sqlite
+        php artisan key:generate
+        php artisan migrate --force
+        
+    - name: Run tests
+      working-directory: ./ico-atlas
+      run: php artisan test
